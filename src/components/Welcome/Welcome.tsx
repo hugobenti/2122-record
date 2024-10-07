@@ -7,7 +7,7 @@ const Welcome = () => {
   const welcomeText = useMemo(() => {
     const index = Math.floor(Math.random() * welcomeArray.length);
     return welcomeArray[index];
-  }, []);
+  }, [animations.welcome]);
   return (
     <div
       id="welcome"

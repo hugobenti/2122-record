@@ -6,6 +6,7 @@ import Welcome from "./components/Welcome/Welcome";
 import Services from "./components/Services/Services";
 import SectionSeparator from "./components/Separator/SectionSeparator";
 import Catalog from "./components/Catalog/Catalog";
+import Home from "./components/Home/Home";
 function App() {
   const [backgroundPosition, setBackgroundPosition] = useState("center 0");
 
@@ -35,19 +36,17 @@ function App() {
 
   return (
     <AppProvider>
-      <div className="w-screen bg-stone-700">
+      <div className="w-screen bg-zinc-800">
         <Header />
         <div className="w-1 h-24" />
         <Welcome />
-        {/* <div className="img-card" style={{ backgroundPosition }}>
-          <div className="relative bg-[#00000044] w-48 h-72 top-[10%] left-[10%] rounded-md p-4">
-            <p className="text-neutral-100">Alguma coisa sei la</p>
-          </div>
-          </div> */}
+  
       </div>
-      <SectionSeparator  bottomColor="fill-stone-900" topColor="bg-stone-700" />
+      <SectionSeparator  bottomColor="fill-stone-900" topColor="bg-zinc-800" />
+      <Home />
+      <SectionSeparator  bottomColor="fill-zinc-800" topColor="bg-stone-900" />
       <Services />
-      <SectionSeparator  bottomColor="fill-stone-700" topColor="bg-stone-900" />
+      <SectionSeparator  bottomColor="fill-stone-900" topColor="bg-zinc-800" />
       <Catalog />
     </AppProvider>
   );

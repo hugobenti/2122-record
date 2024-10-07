@@ -9,7 +9,7 @@ const Services = () => {
   );
 
   return (
-    <div id="services" className={`bg-stone-900 py-6 px-24 `} ref={servicesRef}>
+    <div id="services" className={`bg-zinc-800 py-6 px-24 `} ref={servicesRef}>
       <p
         className={`large-text text-stone-200 pb-8 transition-all duration-1000 ${
           animations.services

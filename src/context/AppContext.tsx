@@ -13,12 +13,14 @@ export interface AppContextData {
   welcomeRef: React.RefObject<HTMLDivElement>;
   servicesRef: React.RefObject<HTMLDivElement>;
   catalogRef: React.RefObject<HTMLDivElement>;
+  homeRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface IAnimations {
   welcome: boolean,
   services: boolean,
   catalog:boolean,
+  home:boolean
 }
 
 // Tipos para as props do provider
@@ -34,14 +36,15 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const welcomeRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const catalogRef = useRef<HTMLDivElement>(null);
+  const homeRef = useRef<HTMLDivElement>(null);
   const [animations, setAnimations] = useState<IAnimations>({
     welcome: false,
     services: false,
-    catalog:false,
+    catalog:false,home:false
   });
 
 
-  type AnimationKeys = "welcome" | "services" | "catalog";
+  type AnimationKeys = "welcome" | "services" | "catalog"| "home";
 
   const handleShowAnimation = (id: AnimationKeys) => {
 
@@ -76,6 +79,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       observer.observe(catalogRef.current);
     }
 
+    if (homeRef.current) {
+      observer.observe(homeRef.current);
+    }
+
     return () => {
       if (welcomeRef.current) {
         observer.unobserve(welcomeRef.current);
@@ -86,6 +93,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       if (catalogRef.current) {
         observer.unobserve(catalogRef.current);
       }
+      if (homeRef.current) {
+        observer.unobserve(homeRef.current);
+      }
     };
   }, []); // Apenas a primeira renderização
 
@@ -95,6 +105,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         animations,
         welcomeRef,
         servicesRef,
+        homeRef,
         catalogRef
       }}
     >
