@@ -40,13 +40,14 @@ function App() {
         <Header />
         <div className="w-1 h-24" />
         <Welcome />
-  
       </div>
-      <SectionSeparator  bottomColor="fill-stone-900" topColor="bg-zinc-800" />
-      <Home />
-      <SectionSeparator  bottomColor="fill-zinc-800" topColor="bg-stone-900" />
+      <SectionSeparator bottomColor="fill-stone-900" topColor="bg-zinc-800" />
+      <div className="sm:inline hidden">
+        <Home />
+      </div>
+      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-stone-900" />
       <Services />
-      <SectionSeparator  bottomColor="fill-stone-900" topColor="bg-zinc-800" />
+      <SectionSeparator bottomColor="fill-stone-900" topColor="bg-zinc-800" />
       <Catalog />
     </AppProvider>
   );
