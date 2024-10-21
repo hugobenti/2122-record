@@ -7,8 +7,6 @@
 
 .img-card {
   background: url("./assets/polvosoh.png");
-  /* Faz com que o background se mova com o scroll */
-  /* background-attachment: fixed;  */
   position: relative;
   background-repeat: no-repeat;
   background-position: center;
@@ -53,8 +51,8 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .small-text {

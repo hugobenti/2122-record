@@ -9,7 +9,7 @@ const Services = () => {
   );
 
   return (
-    <div id="services" className={`bg-zinc-800 py-6 px-24 `} ref={servicesRef}>
+    <div id="services" className={`bg-zinc-800 py-6 sm:px-24 px-8 `} ref={servicesRef}>
       <p
         className={`large-text text-stone-200 pb-8 transition-all duration-1000 ${
           animations.services
@@ -63,7 +63,7 @@ const Services = () => {
               </a>
             </div>
             <div
-              className={`small-text pb-2 w-full overflow-hidden transition-all duration-1000 pt-2 px-4 ${
+              className={`medium-text pb-2 w-full overflow-hidden transition-all duration-1000 pt-2 px-4 ${
                 contentExpanded[index]
                   ? "max-h-[200vh] text-stone-200"
                   : "max-h-[0px] text-transparent"
@@ -71,10 +71,10 @@ const Services = () => {
             >
               {mapValue.fullContent.split("<br/>").map((mapValue, index) => {
                 return (
-                  <div key={`service_fullContent_${index}_${mapValue.slice(5)}`}>
+                  <p key={`service_fullContent_${index}_${mapValue.slice(5)}`} className="medium-text pb-1">
                     {mapValue}
                     <br />
-                  </div>
+                  </p>
                 );
               })}
             </div>
