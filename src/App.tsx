@@ -7,6 +7,7 @@ import Services from "./components/Services/Services";
 import SectionSeparator from "./components/Separator/SectionSeparator";
 import Catalog from "./components/Catalog/Catalog";
 import Home from "./components/Home/Home";
+import About from "./components/About/About";
 function App() {
   const [backgroundPosition, setBackgroundPosition] = useState("center 0");
 
@@ -36,15 +37,14 @@ function App() {
 
   return (
     <AppProvider>
-      <div className="w-screen bg-zinc-800">
+      <div className="w-screen bg-stone-900">
         <Header />
         <div className="w-1 h-24" />
         <Welcome />
       </div>
-      <SectionSeparator bottomColor="fill-stone-900" topColor="bg-zinc-800" />
-      <div className="sm:inline hidden">
-        <Home />
-      </div>
+      <Home />
+      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-stone-900" />
+      <About />
       <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-stone-900" />
       <Services />
       <SectionSeparator bottomColor="fill-stone-900" topColor="bg-zinc-800" />

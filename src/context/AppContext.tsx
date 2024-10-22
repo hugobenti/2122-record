@@ -14,6 +14,7 @@ export interface AppContextData {
   welcomeRef: React.RefObject<HTMLDivElement>;
   servicesRef: React.RefObject<HTMLDivElement>;
   catalogRef: React.RefObject<HTMLDivElement>;
+  aboutRef: React.RefObject<HTMLDivElement>;
   homeRef: React.RefObject<HTMLDivElement>;
   handleScroll: (step: string) => void;
 }
@@ -37,6 +38,7 @@ const AppContext = createContext<AppContextData | null>(null);
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const welcomeRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
   const catalogRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
   const [animations, setAnimations] = useState<IAnimations>({
@@ -63,13 +65,18 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   const handleScroll = (step: string) => {
     switch (step.toLocaleLowerCase()) {
-      case "sobre":
+      case "home":
         welcomeRef.current?.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
-        fixHeaderScrollPosition(welcomeRef);
-
+        return;
+      case "sobre":
+        aboutRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        fixHeaderScrollPosition(aboutRef);
         return;
       case "catalogo":
         catalogRef.current?.scrollIntoView({
@@ -145,6 +152,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         homeRef,
         catalogRef,
         handleScroll,
+        aboutRef,
       }}
     >
       {children}

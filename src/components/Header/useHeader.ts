@@ -16,9 +16,10 @@ function UseHeader(initialValue: number = 0): IUseHeader {
         useRef<HTMLAnchorElement>(null),
         useRef<HTMLAnchorElement>(null),
         useRef<HTMLAnchorElement>(null),
+        useRef<HTMLAnchorElement>(null),
       ];
     
-    const headerOptions = ["Sobre","Serviços","Catalogo","Portfolio"];
+    const headerOptions = ["Home","Sobre","Serviços","Catalogo","Portfolio"];
   return {
     selectorPosition,
     headerRefs,

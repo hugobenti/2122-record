@@ -15,7 +15,7 @@ const Catalog = ({}) => {
         Catalogo
       </p>
 
-      <Carousel contentData={[{ title: "a" }, { title: "b" }]} />
+      <Carousel contentData={[{ title: "a" }, { title: "b" }, { title: "c" }]} />
     </div>
   );
 };
