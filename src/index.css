@@ -87,3 +87,12 @@
   height: 100%;
   max-height: 480px;
 }
+
+@media (max-width: 768px) {
+  .video-responsive iframe {
+    max-height: 320px;
+  }
+  .video-responsive {
+    padding-top: 320px;
+  }
+}

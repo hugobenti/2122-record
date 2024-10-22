@@ -7,7 +7,7 @@ interface SectionSeparatorProps {
 
 const SectionSeparator: React.FC<SectionSeparatorProps> = ({ topColor, bottomColor }) => {
   return (
-    <div className={`relative w-full h-[100px] overflow-hidden ${topColor}`}>
+    <div className={`relative w-full h-[100px] overflow-hidden ${topColor} scale-105`}>
       {/* Curved SVG separator */}
       <svg
         className="block relative w-full h-[100px]"

@@ -11,7 +11,7 @@ const Welcome = () => {
   return (
     <div
       id="welcome"
-      className="flex justify-center items-end gap-4 pt-16 pb-12 "
+      className="flex justify-center sm:items-end items-center gap-4 pt-16 pb-12 sm:flex-row flex-col"
       ref={welcomeRef}
     >
       <p
@@ -23,7 +23,7 @@ const Welcome = () => {
       </p>
       <div className="max-w-[40%] overflow-hidden flex items-start">
         <div
-          className={`large-text uppercase text-stone-300 mb-1 transition-all duration-1000 ${
+          className={`sm:large-text large-title uppercase text-stone-300 mb-1 transition-all duration-1000 ${
             animations.welcome === true
               ? `translate-x-0 opacity-100`
               : `-translate-x-3/4 opacity-0`
