@@ -11,10 +11,10 @@ const Services = () => {
   return (
     <div id="services" className={`bg-zinc-800 py-6 sm:px-24 px-8 `} ref={servicesRef}>
       <p
-        className={`large-text text-stone-200 pb-8 transition-all duration-1000 ${
+        className={`large-text text-stone-200 pb-8 transition-all duration-200 ${
           animations.services
-            ? `translate-x-0 opacity-100`
-            : `-translate-x-full opacity-0`
+            ? `opacity-100`
+            : `opacity-0`
         }`}
       >
         Serviços
@@ -26,7 +26,7 @@ const Services = () => {
               className={`large-title text-stone-200 pb-4 transition-all duration-1000 delay-150 ${
                 animations.services
                   ? `translate-x-0 opacity-100`
-                  : `-translate-x-full opacity-0`
+                  : `-translate-x-24 opacity-0`
               }`}
             >
               {mapValue.title}
@@ -35,7 +35,7 @@ const Services = () => {
               className={`medium-text text-stone-200 pb-2 w-full transition-all duration-1000 delay-300 ${
                 animations.services
                   ? `translate-x-0 opacity-100`
-                  : `-translate-x-full opacity-0`
+                  : `-translate-x-24 opacity-0`
               }`}
             >
               {mapValue.text}

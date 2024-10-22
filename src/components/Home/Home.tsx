@@ -7,10 +7,10 @@ const Home = () => {
   const { homeRef, animations } = useAppContext();
 
   return (
-    <div className={`bg-stone-900 px-24 w-full `}>
+    <div className={`bg-stone-900 px-24 w-full `} ref={homeRef}>
       <div className="flex w-full justify-between gap-8 items-center">
         <div className="h-full flex flex-col gap-8 items-center justify-center">
-          <div className="w-full pb-6" ref={homeRef} id="home">
+          <div className="w-full pb-6"  id="home">
    
             <div className="flex h-full">
               <YoutubeEmbed embedId="IwQ2eFQwdoE" />

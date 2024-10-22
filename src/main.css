@@ -645,6 +645,10 @@ video {
   width: 3rem;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .w-auto {
   width: auto;
 }
@@ -655,10 +659,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-8 {
-  width: 2rem;
 }
 
 .min-w-80 {
@@ -677,13 +677,13 @@ video {
   max-width: 720px;
 }
 
-.-translate-x-3\/4 {
-  --tw-translate-x: -75%;
+.-translate-x-24 {
+  --tw-translate-x: -6rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.-translate-x-full {
-  --tw-translate-x: -100%;
+.-translate-x-3\/4 {
+  --tw-translate-x: -75%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -740,6 +740,10 @@ video {
   justify-content: space-between;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -752,24 +756,25 @@ video {
   gap: 2rem;
 }
 
-.gap-2 {
-  gap: 0.5rem;
-}
-
 .overflow-hidden {
   overflow: hidden;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
 }
 
 .rounded-full {
   border-radius: 9999px;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
+}
+
+.border-stone-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(214 211 209 / var(--tw-border-opacity));
 }
 
 .bg-blue-500 {
@@ -814,6 +819,10 @@ video {
   padding: 0.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-24 {
   padding-left: 6rem;
   padding-right: 6rem;
@@ -854,9 +863,8 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
+.pb-1 {
+  padding-bottom: 0.25rem;
 }
 
 .pb-12 {
@@ -893,10 +901,6 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
-}
-
-.pb-1 {
-  padding-bottom: 0.25rem;
 }
 
 .text-center {
@@ -1018,6 +1022,10 @@ video {
 
 .duration-1000 {
   transition-duration: 1000ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
 }
 
 .duration-500 {
@@ -1162,15 +1170,5 @@ video {
   .sm\:px-24 {
     padding-left: 6rem;
     padding-right: 6rem;
-  }
-
-  .sm\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .sm\:px-12 {
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 }

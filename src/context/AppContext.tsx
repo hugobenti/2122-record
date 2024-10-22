@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 
+export type AnimationKeys = "welcome" | "services" | "catalog" | "home";
 // Interface para os dados do contexto
 export interface AppContextData {
   animations: IAnimations;
@@ -14,13 +15,14 @@ export interface AppContextData {
   servicesRef: React.RefObject<HTMLDivElement>;
   catalogRef: React.RefObject<HTMLDivElement>;
   homeRef: React.RefObject<HTMLDivElement>;
+  handleScroll: (step: string) => void;
 }
 
 export interface IAnimations {
-  welcome: boolean,
-  services: boolean,
-  catalog:boolean,
-  home:boolean
+  welcome: boolean;
+  services: boolean;
+  catalog: boolean;
+  home: boolean;
 }
 
 // Tipos para as props do provider
@@ -40,15 +42,50 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [animations, setAnimations] = useState<IAnimations>({
     welcome: false,
     services: false,
-    catalog:false,home:false
+    catalog: false,
+    home: false,
   });
 
-
-  type AnimationKeys = "welcome" | "services" | "catalog"| "home";
-
   const handleShowAnimation = (id: AnimationKeys) => {
-
     setAnimations((prev) => ({ ...prev, [id]: true }));
+  };
+
+  const fixHeaderScrollPosition = (ref: React.RefObject<HTMLDivElement>) => {
+    setTimeout(() => {
+      const yOffset = -96; // Compensação de 90px
+      const y = ref.current?.getBoundingClientRect().top || 0;
+      window.scrollTo({
+        top: window.pageYOffset + y + yOffset,
+        behavior: "smooth",
+      });
+    }, 100); // Delay para garantir que o scroll original termine
+  };
+
+  const handleScroll = (step: string) => {
+    switch (step.toLocaleLowerCase()) {
+      case "sobre":
+        welcomeRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        fixHeaderScrollPosition(welcomeRef);
+
+        return;
+      case "catalogo":
+        catalogRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        fixHeaderScrollPosition(catalogRef);
+        return;
+      case "serviços":
+        servicesRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        fixHeaderScrollPosition(servicesRef);
+        return;
+    }
   };
 
   useEffect(() => {
@@ -60,7 +97,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
           } else {
             // Se o elemento sair da viewport, redefina a animação
             const id = entry.target.id as AnimationKeys;
-              setAnimations((prev) => ({ ...prev, [id]: false }));
+            setAnimations((prev) => ({ ...prev, [id]: false }));
           }
         });
       },
@@ -106,7 +143,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         welcomeRef,
         servicesRef,
         homeRef,
-        catalogRef
+        catalogRef,
+        handleScroll,
       }}
     >
       {children}

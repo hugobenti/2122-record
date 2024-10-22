@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import UseHeader from "./useHeader";
 import MenuIcon from "../../assets/svgIcon/MenuIcon";
+import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
   const { headerOptions, headerRefs, selectorPosition, setSelectorPosition } =
     UseHeader();
+    const { handleScroll } = useAppContext();
 
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
   return (
@@ -22,6 +24,9 @@ const Header = () => {
                     setSelectorPosition(
                       headerRefs[index].current!.getBoundingClientRect().x
                     );
+                }}
+                onClick={()=>{
+                  handleScroll(value)
                 }}
               >
                 {value}
@@ -57,6 +62,10 @@ const Header = () => {
           return (
             <a
               className={`py-3 px-6 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg`}
+              onClick={()=>{
+                handleScroll(value)
+                setMenuCollapsed(true);
+              }}
             >
               {value}
             </a>
