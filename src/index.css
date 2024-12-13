@@ -2,8 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+@font-face {
+  font-family: "DeadJim";
+  src: url("./assets/fonts/DEADJIM.TTF") format("truetype");
+  font-weight: normal; /* Ou 'bold', dependendo da fonte */
+  font-style: normal; /* Ou 'italic', se necessário */
+}
+
+p {
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
 
 .img-card {
   background: url("./assets/polvosoh.png");
@@ -21,24 +35,30 @@
 }
 
 .extra-large-title {
-  font-family: "Oswald", sans-serif;
+  font-family: "DeadJim";
   font-optical-sizing: auto;
-  font-weight: 200;
+  font-weight: 300;
   font-style: normal;
   font-size: 128px;
   line-height: 128px;
 }
 
 .large-text {
-  font-family: "Oswald", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   font-size: 48px;
   line-height: 48px;
 }
-.large-title {
-  font-family: "Oswald", sans-serif;
+
+.header-title {
+  font-family: "DeadJim" !important;
+}
+
+.large-title,
+.header-title {
+  font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -47,7 +67,7 @@
 }
 
 .medium-text {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-size: 1rem;
@@ -55,7 +75,7 @@
 }
 
 .small-text {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -64,7 +84,7 @@
 }
 
 .medium-text-bold {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
@@ -77,6 +97,7 @@
   overflow: hidden;
   width: 100%;
   padding-top: 480px; /* 16:9 aspect ratio */
+  max-width: 850px;
 }
 
 .video-responsive iframe {
@@ -86,6 +107,7 @@
   width: 100%;
   height: 100%;
   max-height: 480px;
+  max-width: 850px;
 }
 
 @media (max-width: 768px) {
@@ -95,4 +117,30 @@
   .video-responsive {
     padding-top: 320px;
   }
+}
+
+.app-background {
+  background: url("./assets/fundo.jpeg");
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  background-position: 50%;
+}
+
+.catalog-yt-video .video-responsive {
+  padding-top: 240px;
+}
+
+.catalog-yt-video .video-responsive iframe {
+  max-height: 240px;
+}
+
+.home-yt-video {
+  max-width: 850px;
+}
+
+.padding-space {
+  min-width: 96px;
+  height: 100px;
 }

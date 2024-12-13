@@ -11,7 +11,7 @@ const Welcome = () => {
   return (
     <div
       id="welcome"
-      className="flex justify-center sm:items-end items-center gap-4 pt-16 pb-12 sm:flex-row flex-col"
+      className="flex justify-center sm:items-end items-center gap-4 pt-8 pb-12 sm:flex-row flex-col"
       ref={welcomeRef}
     >
       <p

@@ -1,22 +1,29 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import YoutubeEmbed from "../YoutubeEmbed";
+import ArrowIcon from "../../assets/svgIcon/ArrowSvg";
 
 export interface ICarouselItem {
   title: string;
+  link: string;
+  artist: string;
+  description?: string;
 }
 
 export interface CarouselProps {
   contentData: ICarouselItem[];
   onPaginationChange?: (index: number, orientation: "prev" | "next") => void;
+  itemSize?: number;
 }
 
 export const Carousel = ({
   contentData,
   onPaginationChange,
+  itemSize = 0.9,
 }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const goToNext = () => {
-    if (currentIndex + 1 === contentData.length) return;
+    if (currentIndex + 1 === maxIndex) return;
     setCurrentIndex((prev) => prev + 1);
   };
 
@@ -26,7 +33,7 @@ export const Carousel = ({
   };
 
   const divRef = useRef<HTMLDivElement>(null);
-  const [divHeight, setDivHeight] = useState<string>("");
+  const [divHeight, setDivHeight] = useState<string>("auto");
   const [divWidth, setDivWidth] = useState<string>("auto");
   useEffect(() => {
     if (divRef.current)
@@ -37,11 +44,17 @@ export const Carousel = ({
           } else
             setDivHeight(`${divRef.current.getBoundingClientRect().height}px`);
           setDivWidth(
-            `${divRef.current.getBoundingClientRect().width * 0.9}px`
+            `${divRef.current.getBoundingClientRect().width * itemSize}px`
           );
         }
       }, 100);
-  }, [divRef.current]);
+  }, [divRef.current, contentData]);
+
+  const maxIndex = useMemo(() => {
+    console.log(1 / itemSize);
+    console.log(contentData.length - Math.trunc(1 / itemSize) + 1);
+    return contentData.length - Math.trunc(1 / itemSize) + 1;
+  }, [contentData]);
 
   return (
     <div className="flex flex-col items-center w-full">
@@ -53,23 +66,39 @@ export const Carousel = ({
           <div
             className={`flex gap-2 items-start transition-transform duration-500 ease-in-out`}
             style={{
-              transform: `translateX(calc((${currentIndex} * -${divWidth} - ${currentIndex} * 8px) + ${
-                currentIndex === contentData.length - 1
-                  ? `${divWidth}/10 + 8px`
-                  : "0px"
-              }`,
+              transform: `translateX(calc((${currentIndex} * -${divWidth} - ${currentIndex} * 8px)`,
             }}
           >
+            <div className="padding-space" />
             {divRef &&
               contentData.map((data) => (
-                <div
-                  key={data.title}
-                  style={{
-                    height: divHeight,
-                    minWidth: divWidth,
-                  }}
-                >
-                  <div className="border border-stone-300 p-8 w-full h-full">{data.title}</div>
+                <div key={data.title}>
+                  <div
+                    className="bg-zinc-700 p-8 w-full h-full text-white rounded-md py-6"
+                    style={{
+                      minWidth: divWidth,
+                      minHeight: divHeight,
+                    }}
+                  >
+                    <div className="catalog-yt-video">
+                      <YoutubeEmbed
+                        embedId={data.link.replace(
+                          "https://www.youtube.com/watch?v=",
+                          ""
+                        )}
+                      />
+                    </div>
+                    <div className="mt-4">
+                      <p className="medium-text-bold text-white">
+                        {data.artist}
+                      </p>
+                    </div>
+                    <div className="mt-2">
+                      <p className="medium-text text-stone-300">
+                        {data.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
           </div>
@@ -83,15 +112,14 @@ export const Carousel = ({
             goToPrevious();
             if (onPaginationChange) onPaginationChange(currentIndex, "prev");
           }}
-          className={`flex h-8 w-8 items-center justify-center rounded-full border border-neutral3 transition-all ${
-            currentIndex + 1 !== 1 ? "cursor-pointer hover:shadow-md" : ""
+          className={`-rotate-90 flex h-8 w-8 items-center justify-center rounded-full border border-neutral3 transition-all ${
+            currentIndex + 1 !== 1
+              ? "cursor-pointer hover:shadow-md hover:bg-purple-700"
+              : "cursor-default"
           }`}
         >
-          <div className="rotate-90">{">"} </div>
+          <ArrowIcon />
         </button>
-        <p className="body-text text-neutral7">
-          {currentIndex + 1} de {contentData.length}
-        </p>
         <button
           type="button"
           disabled={currentIndex + 1 === contentData.length}
@@ -99,13 +127,13 @@ export const Carousel = ({
             goToNext();
             if (onPaginationChange) onPaginationChange(currentIndex, "next");
           }}
-          className={`flex h-8 w-8 items-center justify-center rounded-full border border-neutral3 transition-all ${
-            currentIndex + 1 !== contentData.length
-              ? "cursor-pointer hover:shadow-md"
-              : ""
+          className={`rotate-90 flex h-8 w-8 items-center justify-center rounded-full border border-neutral3 transition-all ${
+            currentIndex + 1 !== maxIndex
+              ? "cursor-pointer hover:shadow-md hover:bg-purple-700"
+              : "cursor-default"
           }`}
         >
-          <div className="-rotate-90">{">"}</div>
+          <ArrowIcon />
         </button>
       </div>
     </div>

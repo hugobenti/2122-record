@@ -65,7 +65,7 @@ const Services = () => {
             <div
               className={`medium-text pb-2 w-full overflow-hidden transition-all duration-1000 pt-2 px-4 ${
                 contentExpanded[index]
-                  ? "max-h-[200vh] text-stone-200 overflow-scroll"
+                  ? "max-h-[200vh] text-stone-200"
                   : "max-h-[0px] text-transparent"
               }`}
             >

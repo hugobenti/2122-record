@@ -10,7 +10,7 @@ const Header = () => {
 
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
   return (
-    <div className="fixed w-screen h-24 bg-stone-800 shadow-lg z-10 ">
+    <div className="fixed w-screen h-24 bg-stone-800 bg-opacity-90 shadow-lg z-10 ">
       <div className="sm:px-24 px-6 w-auto h-full flex items-center justify-between shadow-md overflow-hidden">
         <div className="gap-6 z-10 sm:flex hidden">
           {headerOptions.map((value, index) => {
@@ -44,7 +44,7 @@ const Header = () => {
           <MenuIcon stroke="#FFFFFF" />
         </button>
 
-        <p className="large-title text-stone-50">2122</p>
+        <p className="header-title text-stone-50">2122</p>
       </div>
 
       <div

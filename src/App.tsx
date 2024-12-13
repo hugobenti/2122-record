@@ -37,17 +37,26 @@ function App() {
 
   return (
     <AppProvider>
-      <div className="w-screen bg-stone-900">
+      <div className="w-0 h-0 absolute">
+        <div className="app-background" />
+      </div>
+
+      <div className="w-screen ">
         <Header />
         <div className="w-1 h-24" />
         <Welcome />
       </div>
+
       <Home />
-      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-stone-900" />
+
+      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-transparent" />
+
       <About />
-      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-stone-900" />
+
+      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-transparent" />
+
       <Services />
-      <SectionSeparator bottomColor="fill-stone-900" topColor="bg-zinc-800" />
+
       <Catalog />
     </AppProvider>
   );
