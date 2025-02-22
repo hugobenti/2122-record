@@ -57,7 +57,7 @@ export const Carousel = ({
   }, [contentData]);
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-screen">
       <div
         className="flex flex-col items-start justify-center w-full h-full"
         ref={divRef}
@@ -104,7 +104,7 @@ export const Carousel = ({
           </div>
         </div>
       </div>
-      <div className="flex gap-4 items-center justify-center pt-6 pb-1">
+      <div className="flex gap-4 items-center justify-center pt-6 pb-1 w-screen relative right-0">
         <button
           type="button"
           disabled={currentIndex + 1 === 1}

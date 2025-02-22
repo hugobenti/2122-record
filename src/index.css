@@ -11,7 +11,7 @@
   font-style: normal; /* Ou 'italic', se necessário */
 }
 
-p {
+p, h3, a {
   font-family: "Quicksand", sans-serif;
 }
 
@@ -120,12 +120,12 @@ body {
 }
 
 .app-background {
-  background: url("./assets/fundo.jpeg");
+  background-image: url("./assets/fundo2.jpeg");
   position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: -10;
-  background-position: 50%;
+  background-size: cover;
 }
 
 .catalog-yt-video .video-responsive {

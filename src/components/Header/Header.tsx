@@ -4,75 +4,79 @@ import MenuIcon from "../../assets/svgIcon/MenuIcon";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
-  const { headerOptions, headerRefs, selectorPosition, setSelectorPosition } =
-    UseHeader();
-    const { handleScroll } = useAppContext();
+  const { headerOptions, headerRefs, selectorPosition, setSelectorPosition } = UseHeader();
+  const { handleScroll } = useAppContext();
 
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
+
   return (
-    <div className="fixed w-screen h-24 bg-stone-800 bg-opacity-90 shadow-lg z-10 ">
-      <div className="sm:px-24 px-6 w-auto h-full flex items-center justify-between shadow-md overflow-hidden">
-        <div className="gap-6 z-10 sm:flex hidden">
-          {headerOptions.map((value, index) => {
-            return (
-              <a
-                ref={headerRefs[index]}
-                key={`header-${value}`}
-                className={`py-3 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg`}
-                onMouseEnter={(event) => {
-                  if (headerRefs[index].current)
-                    setSelectorPosition(
-                      headerRefs[index].current!.getBoundingClientRect().x
-                    );
-                }}
-                onClick={()=>{
-                  handleScroll(value)
-                }}
-              >
-                {value}
-              </a>
-            );
-          })}
+    <header className="fixed top-0 left-0 w-full z-10">
+      <div className="bg-stone-800 bg-opacity-90 shadow-lg">
+        {/* Barra superior fixa */}
+        <div className="sm:px-24 px-6 h-24 flex items-center justify-between">
+          {/* Menu desktop */}
+          <nav className="hidden sm:flex gap-6 z-10">
+            {headerOptions.map((value, index) => (
+ <a
+ ref={headerRefs[index]}
+ key={`header-${value}`}
+ className="py-3 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg"
+ onMouseEnter={() => {
+   const currentRef = headerRefs[index].current;
+   if (currentRef) {
+     setSelectorPosition(currentRef.getBoundingClientRect().x);
+   }
+ }}
+ onClick={() => handleScroll(value)}
+>
+ {value}
+</a>
+
+            ))}
+          </nav>
+          {/* Botão mobile */}
+          <button
+            className="sm:hidden flex w-10 h-10 rounded-lg hover:bg-stone-700 p-2"
+            onClick={() => setMenuCollapsed(prev => !prev)}
+          >
+            <MenuIcon stroke="#FFFFFF" />
+          </button>
+          {/* Logo ou título */}
+          <p className="header-title text-stone-50">2122</p>
         </div>
 
-        <button
-          className="sm:hidden flex w-10 h-10 rounded-lg hover:bg-stone-700 p-2"
-          onClick={() => {
-            setMenuCollapsed((prev) => !prev);
-          }}
+        {/* Indicador animado (apenas desktop) */}
+        <div className="hidden sm:block relative">
+          <div
+            style={{
+              transform: `translateX(${selectorPosition}px) rotate(210deg)`,
+            }}
+            className="absolute -top-8 left-0 w-12 h-40 bg-slate-700 opacity-20 transition-all"
+          />
+        </div>
+
+        {/* Menu mobile expansível */}
+        <div
+          className={`sm:hidden absolute left-0 w-full bg-stone-800 shadow-lg overflow-hidden transition-all duration-500 ${
+            menuCollapsed ? "max-h-0" : "max-h-[50vh]"
+          }`}
+          style={{ top: "6rem" }} // posiciona logo abaixo da barra (24 * 4px = 96px ≈ 6rem)
         >
-          <MenuIcon stroke="#FFFFFF" />
-        </button>
-
-        <p className="header-title text-stone-50">2122</p>
-      </div>
-
-      <div
-        style={{
-          transform: `translateX(${selectorPosition}px) rotate(210deg)`,
-        }}
-        className="sm:absolute hidden -top-8 left-0 w-12 h-40 bg-slate-700 opacity-20 transition-all"
-      />
-      <div
-        className={`w-auto flex flex-col bg-stone-800 mt-[1px] shadow-lg ${
-          menuCollapsed ? "max-h-0" : "max-h-[25vh]"
-        } transition-all overflow-hidden`}
-      >
-        {headerOptions.map((value, index) => {
-          return (
+          {headerOptions.map((value, index) => (
             <a
-              className={`py-3 px-6 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg`}
-              onClick={()=>{
-                handleScroll(value)
+              key={`mobile-header-${value}`}
+              className="block py-3 px-6 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg"
+              onClick={() => {
+                handleScroll(value);
                 setMenuCollapsed(true);
               }}
             >
               {value}
             </a>
-          );
-        })}
+          ))}
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

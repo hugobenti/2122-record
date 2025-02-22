@@ -8,6 +8,8 @@ import SectionSeparator from "./components/Separator/SectionSeparator";
 import Catalog from "./components/Catalog/Catalog";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
+import Portfolio from "./components/Portfolio/Portfolio";
+import Footer from "./components/Footer/Footer";
 function App() {
   const [backgroundPosition, setBackgroundPosition] = useState("center 0");
 
@@ -56,8 +58,16 @@ function App() {
       <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-transparent" />
 
       <Services />
+      <div className="rotate-180">
+
+      <SectionSeparator bottomColor="fill-zinc-800" topColor="bg-transparent" />
+      </div>
 
       <Catalog />
+
+      <Portfolio />
+
+      <Footer />
     </AppProvider>
   );
 }
