@@ -1,23 +1,14 @@
-import React from 'react';
+import React from "react";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {}
 
 const MenuIcon: React.FC<IconProps> = (props) => {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        d="M4 6H20M4 12H20M4 18H20"
-        stroke={props.stroke}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <div className="w-8 h-8 py-1 flex flex-col justify-between">
+      <div className="w-full h-1 bg-white rounded-md" />
+      <div className="w-full h-1 bg-white rounded-md" />
+      <div className="w-full h-1 bg-white rounded-md" />
+    </div>
   );
 };
 

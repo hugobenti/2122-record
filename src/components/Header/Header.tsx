@@ -39,7 +39,7 @@ const Header = () => {
           </nav>
           {/* Botão mobile */}
           <button
-            className="sm:hidden flex w-10 h-10 rounded-lg hover:bg-stone-700 p-2"
+            className="sm:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-stone-700 p-2"
             onClick={() => setMenuCollapsed(prev => !prev)}
           >
             <MenuIcon stroke="#FFFFFF" />

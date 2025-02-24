@@ -689,6 +689,10 @@ video {
   height: 0px;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -767,6 +771,10 @@ video {
 
 .max-w-7xl {
   max-width: 80rem;
+}
+
+.max-w-\[100vw\] {
+  max-width: 100vw;
 }
 
 .flex-shrink-0 {
@@ -895,6 +903,10 @@ video {
   overflow-x: auto;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -976,6 +988,11 @@ video {
   background-color: transparent;
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-zinc-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
@@ -1030,6 +1047,11 @@ video {
   padding-right: 2rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1048,11 +1070,6 @@ video {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 .pb-1 {
@@ -1293,15 +1310,11 @@ video {
 @font-face {
   font-family: "DeadJim";
 
-  src: url("./assets/fonts/DEADJIM.TTF") format("truetype");
+  src: url("./assets/fonts/deadjim.tff") format("truetype");
 
   font-weight: normal;
 
-  /* Ou 'bold', dependendo da fonte */
-
   font-style: normal;
-
-  /* Ou 'italic', se necessário */
 }
 
 p, h3, a {
@@ -1343,6 +1356,15 @@ body {
   font-style: normal;
   font-size: 48px;
   line-height: 48px;
+}
+
+@media (max-width: 640px) {
+  .subtitle {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 500;
+    padding: 4px 12px;
+  }
 }
 
 .large-text {
@@ -1426,7 +1448,7 @@ body {
 .app-background {
   background-image: url("./assets/fundo2.jpeg");
   position: fixed;
-  width: 100vw;
+  width: 110vw;
   height: 100vh;
   z-index: -10;
   background-size: cover;

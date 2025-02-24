@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useAppContext } from "../../context/AppContext";
 
 const Services = () => {
   const { servicesRef, animations } = useAppContext();
-  const [contentExpanded, setContentExpanded] = useState<boolean[]>([
-    false,
-    false,
-    false,
-  ]);
+  const [contentExpanded, setContentExpanded] = useState<boolean[]>([false, false, false]);
+
+  // Cria refs individuais para cada seção de serviço
+  const musicSectionRef = useRef<HTMLDivElement>(null);
+  const marketingSectionRef = useRef<HTMLDivElement>(null);
+  const juridicoSectionRef = useRef<HTMLDivElement>(null);
+
+  // Função para lidar com o clique "Veja mais" e posicionar a seção
+  const handleVejaMais = (index: number, sectionRef: React.RefObject<HTMLDivElement>) => {
+    setContentExpanded((prev) => {
+      const newContentExpanded = [...prev];
+      newContentExpanded[index] = !prev[index];
+      return newContentExpanded;
+    });
+
+    // Aguarda a atualização do layout para então rolar suavemente para a posição desejada
+    setTimeout(() => {
+      if (sectionRef.current) {
+        const yCoordinate =
+          sectionRef.current.getBoundingClientRect().top + window.pageYOffset;
+        const headerOffset = 80; // Substitua 80 pelo tamanho real do seu header fixo
+        window.scrollTo({ top: yCoordinate - headerOffset, behavior: "smooth" });
+      }
+    }, 300);
+  };
 
   return (
     <div
@@ -26,7 +46,7 @@ const Services = () => {
         </p>
 
         {/* Serviço: Músicas */}
-        <div className="mb-12">
+        <div ref={musicSectionRef} className="mb-12">
           <p
             className={`large-title text-purple-200 pb-4 transition-all duration-1000 delay-150 ${
               animations.services
@@ -59,13 +79,7 @@ const Services = () => {
                   ? "text-violet-500"
                   : "text-violet-300"
               }`}
-              onClick={() => {
-                setContentExpanded((prev) => {
-                  const newContentExpanded = [...prev];
-                  newContentExpanded[0] = !prev[0];
-                  return newContentExpanded;
-                });
-              }}
+              onClick={() => handleVejaMais(0, musicSectionRef)}
             >
               Veja mais
             </a>
@@ -103,15 +117,11 @@ const Services = () => {
               nossos serviços unem qualidade técnica a preços justos, porque
               sabemos o quanto é desafiador equilibrar sonhos e orçamento.
             </p>
-            <p className="medium-text pb-2">
-              Transforme sua paixão em um som que conecta e impacta. Na 2122, sua
-              música é tratada com o cuidado que merece.
-            </p>
           </div>
         </div>
 
         {/* Serviço: Marketing */}
-        <div className="mb-12">
+        <div ref={marketingSectionRef} className="mb-12">
           <p
             className={`large-title text-purple-200 pb-4 pt-8 transition-all duration-1000 delay-150 ${
               animations.services
@@ -143,13 +153,7 @@ const Services = () => {
                   ? "text-violet-500"
                   : "text-violet-300"
               }`}
-              onClick={() => {
-                setContentExpanded((prev) => {
-                  const newContentExpanded = [...prev];
-                  newContentExpanded[1] = !prev[1];
-                  return newContentExpanded;
-                });
-              }}
+              onClick={() => handleVejaMais(1, marketingSectionRef)}
             >
               Veja mais
             </a>
@@ -192,7 +196,7 @@ const Services = () => {
         </div>
 
         {/* Serviço: Jurídico */}
-        <div className="mb-12">
+        <div ref={juridicoSectionRef} className="mb-12">
           <p
             className={`large-title text-purple-200 pb-4 pt-8 transition-all duration-1000 delay-150 ${
               animations.services
@@ -225,13 +229,7 @@ const Services = () => {
                   ? "text-violet-500"
                   : "text-violet-300"
               }`}
-              onClick={() => {
-                setContentExpanded((prev) => {
-                  const newContentExpanded = [...prev];
-                  newContentExpanded[2] = !prev[2];
-                  return newContentExpanded;
-                });
-              }}
+              onClick={() => handleVejaMais(2, juridicoSectionRef)}
             >
               Veja mais
             </a>

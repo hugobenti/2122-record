@@ -7,6 +7,7 @@ const Welcome = () => {
   const [welcomeText, setWelcomeText] = useState("");
   const [animationState, setAnimationState] = useState<"visible" | "exiting" | "entering">("visible");
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 640);
+  const [isInView, setIsInView] = useState<boolean>(true);
 
   // Configurações de tempo (em milissegundos)
   const exitDuration = 1000; // Duração da animação de saída
@@ -19,8 +20,9 @@ const Welcome = () => {
     setWelcomeText(welcomeArray[index]);
   };
 
-  // Ciclo de animação: anima a saída, atualiza a mensagem e anima a entrada
+  // Ciclo de animação somente quando o componente estiver na viewport
   useEffect(() => {
+    if (!isInView) return; // Se não estiver visível, não cria o ciclo
     // Define a mensagem inicial
     updatePhrase();
 
@@ -28,7 +30,7 @@ const Welcome = () => {
       // Inicia a animação de saída
       setAnimationState("exiting");
       setTimeout(() => {
-        // Atualiza a mensagem enquanto ela está fora da tela
+        // Atualiza a mensagem enquanto ela está fora de vista
         updatePhrase();
         // Inicia a animação de entrada
         setAnimationState("entering");
@@ -40,7 +42,7 @@ const Welcome = () => {
     }, cycleDuration);
 
     return () => clearInterval(cycleInterval);
-  }, []);
+  }, [isInView]);
 
   // Verifica se é mobile e atualiza o estado conforme o redimensionamento da tela
   useEffect(() => {
@@ -52,8 +54,24 @@ const Welcome = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Usa IntersectionObserver para verificar se o componente está visível na viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => setIsInView(entry.isIntersecting));
+      },
+      { threshold: 0.1 }
+    );
+
+    if (welcomeRef.current) {
+      observer.observe(welcomeRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [welcomeRef]);
+
   // Função para inserir uma quebra de linha na mensagem (dividindo aproximadamente no meio)
-  // Esta função será usada apenas em telas maiores que mobile.
+  // Essa função será usada apenas em telas maiores que mobile.
   const formatWelcomeText = (text: string) => {
     if (!text) return "";
     const mid = Math.floor(text.length / 2);

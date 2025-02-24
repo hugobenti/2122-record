@@ -38,6 +38,8 @@ function App() {
   // }, []);
 
   return (
+    <div className="max-w-[100vw] overflow-x-hidden">
+
     <AppProvider>
       <div className="w-0 h-0 absolute">
         <div className="app-background" />
@@ -69,6 +71,7 @@ function App() {
 
       <Footer />
     </AppProvider>
+    </div>
   );
 }
 
