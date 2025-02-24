@@ -7,10 +7,10 @@ const Footer: React.FC = () => {
         {/* Informações da empresa */}
         <div className="mb-6 md:mb-0">
           <h2 className="text-2xl font-bold text-purple-400">2122 Produções</h2>
-          <p className="mt-2">Rua Exemplo, 123</p>
+          {/* <p className="mt-2">Rua Exemplo, 123</p>
           <p>Bairro, Cidade - Estado</p>
-          <p className="mt-1">Telefone: (XX) XXXX-XXXX</p>
-          <p>Email: contato@empresa.com</p>
+          <p className="mt-1">Telefone: (XX) XXXX-XXXX</p> */}
+          <p>Email: 2122producoes@gmail.com</p>
         </div>
 
         {/* Redes sociais */}
@@ -18,18 +18,18 @@ const Footer: React.FC = () => {
           <h3 className="text-xl font-semibold text-purple-400">Siga-nos</h3>
           <ul className="mt-2">
             <li>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
-                Facebook
+              <a href="https://www.youtube.com/@2122prod" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
+                Youtube
               </a>
             </li>
             <li>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
+              <a href="https://www.tiktok.com/@2122.prod" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
+                TikTok
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/2122producoes/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
                 Instagram
-              </a>
-            </li>
-            <li>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-300">
-                LinkedIn
               </a>
             </li>
           </ul>

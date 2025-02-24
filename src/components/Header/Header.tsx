@@ -1,37 +1,40 @@
+// Header.tsx
 import React, { useState } from "react";
 import UseHeader from "./useHeader";
 import MenuIcon from "../../assets/svgIcon/MenuIcon";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
-  const { headerOptions, headerRefs, selectorPosition, setSelectorPosition } = UseHeader();
+  const { headerOptions, headerRefs, selectorPosition, activeHeaderIndex, setSelectorPosition } = UseHeader();
   const { handleScroll } = useAppContext();
 
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
 
   return (
     <header className="fixed top-0 left-0 w-full z-10">
-      <div className="bg-stone-800 bg-opacity-90 shadow-lg">
+      <div className="bg-stone-800 bg-opacity-90 shadow-lg relative">
         {/* Barra superior fixa */}
         <div className="sm:px-24 px-6 h-24 flex items-center justify-between">
           {/* Menu desktop */}
-          <nav className="hidden sm:flex gap-6 z-10">
+          <nav className="hidden sm:flex gap-6 z-10 relative">
             {headerOptions.map((value, index) => (
- <a
- ref={headerRefs[index]}
- key={`header-${value}`}
- className="py-3 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg"
- onMouseEnter={() => {
-   const currentRef = headerRefs[index].current;
-   if (currentRef) {
-     setSelectorPosition(currentRef.getBoundingClientRect().x);
-   }
- }}
- onClick={() => handleScroll(value)}
->
- {value}
-</a>
-
+              <a
+                ref={headerRefs[index]}
+                key={`header-${value}`}
+                // Aplica sublinhado se este for o link ativo
+                className={`pt-3 cursor-pointer border-b-[3px] transition-all text-slate-300 hover:text-violet-400 font-semibold text-lg ${
+                  activeHeaderIndex === index ? " border-violet-400 text-violet-400" : "border-transparent"
+                }`}
+                onMouseEnter={() => {
+                  const currentRef = headerRefs[index].current;
+                  if (currentRef) {
+                    setSelectorPosition(currentRef.getBoundingClientRect().x);
+                  }
+                }}
+                onClick={() => handleScroll(value)}
+              >
+                {value}
+              </a>
             ))}
           </nav>
           {/* Botão mobile */}
@@ -45,22 +48,12 @@ const Header = () => {
           <p className="header-title text-stone-50">2122</p>
         </div>
 
-        {/* Indicador animado (apenas desktop) */}
-        <div className="hidden sm:block relative">
-          <div
-            style={{
-              transform: `translateX(${selectorPosition}px) rotate(210deg)`,
-            }}
-            className="absolute -top-8 left-0 w-12 h-40 bg-slate-700 opacity-20 transition-all"
-          />
-        </div>
-
         {/* Menu mobile expansível */}
         <div
           className={`sm:hidden absolute left-0 w-full bg-stone-800 shadow-lg overflow-hidden transition-all duration-500 ${
             menuCollapsed ? "max-h-0" : "max-h-[50vh]"
           }`}
-          style={{ top: "6rem" }} // posiciona logo abaixo da barra (24 * 4px = 96px ≈ 6rem)
+          style={{ top: "6rem" }}
         >
           {headerOptions.map((value, index) => (
             <a

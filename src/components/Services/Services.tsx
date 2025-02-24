@@ -18,7 +18,7 @@ const Services = () => {
       {/* Centraliza o conteúdo e limita a largura em telas maiores */}
       <div className="max-w-7xl mx-auto">
         <p
-          className={`large-text text-stone-200 pb-8 transition-all duration-200 ${
+          className={`large-text text-purple-200 pb-8 transition-all duration-200 ${
             animations.services ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -28,7 +28,7 @@ const Services = () => {
         {/* Serviço: Músicas */}
         <div className="mb-12">
           <p
-            className={`large-title text-stone-200 pb-4 transition-all duration-1000 delay-150 ${
+            className={`large-title text-purple-200 pb-4 transition-all duration-1000 delay-150 ${
               animations.services
                 ? "translate-x-0 opacity-100"
                 : "-translate-x-24 opacity-0"
@@ -54,10 +54,10 @@ const Services = () => {
             }`}
           >
             <a
-              className={`block text-right pl-4 hover:text-violet-500 cursor-pointer medium-text-bold ${
+              className={`block text-right pl-4 hover:text-violet-300 cursor-pointer medium-text-bold ${
                 !contentExpanded[0]
-                  ? "text-violet-300"
-                  : "text-violet-500"
+                  ? "text-violet-500"
+                  : "text-violet-300"
               }`}
               onClick={() => {
                 setContentExpanded((prev) => {
@@ -67,7 +67,7 @@ const Services = () => {
                 });
               }}
             >
-              Saiba mais
+              Veja mais
             </a>
           </div>
           <div
@@ -113,7 +113,7 @@ const Services = () => {
         {/* Serviço: Marketing */}
         <div className="mb-12">
           <p
-            className={`large-title text-stone-200 pb-4 pt-8 transition-all duration-1000 delay-150 ${
+            className={`large-title text-purple-200 pb-4 pt-8 transition-all duration-1000 delay-150 ${
               animations.services
                 ? "translate-x-0 opacity-100"
                 : "-translate-x-24 opacity-0"
@@ -138,10 +138,10 @@ const Services = () => {
             }`}
           >
             <a
-              className={`block text-right pl-4 hover:text-violet-500 cursor-pointer medium-text-bold ${
+              className={`block text-right pl-4 hover:text-violet-300 cursor-pointer medium-text-bold ${
                 !contentExpanded[1]
-                  ? "text-violet-300"
-                  : "text-violet-500"
+                  ? "text-violet-500"
+                  : "text-violet-300"
               }`}
               onClick={() => {
                 setContentExpanded((prev) => {
@@ -151,7 +151,7 @@ const Services = () => {
                 });
               }}
             >
-              Saiba mais
+              Veja mais
             </a>
           </div>
           <div
@@ -194,7 +194,7 @@ const Services = () => {
         {/* Serviço: Jurídico */}
         <div className="mb-12">
           <p
-            className={`large-title text-stone-200 pb-4 pt-8 transition-all duration-1000 delay-150 ${
+            className={`large-title text-purple-200 pb-4 pt-8 transition-all duration-1000 delay-150 ${
               animations.services
                 ? "translate-x-0 opacity-100"
                 : "-translate-x-24 opacity-0"
@@ -220,10 +220,10 @@ const Services = () => {
             }`}
           >
             <a
-              className={`block text-right pl-4 hover:text-violet-500 cursor-pointer medium-text-bold ${
+              className={`block text-right pl-4 hover:text-violet-300 cursor-pointer medium-text-bold ${
                 !contentExpanded[2]
-                  ? "text-violet-300"
-                  : "text-violet-500"
+                  ? "text-violet-500"
+                  : "text-violet-300"
               }`}
               onClick={() => {
                 setContentExpanded((prev) => {
@@ -233,7 +233,7 @@ const Services = () => {
                 });
               }}
             >
-              Saiba mais
+              Veja mais
             </a>
           </div>
           <div

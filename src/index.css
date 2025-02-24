@@ -40,7 +40,16 @@ body {
   font-weight: 300;
   font-style: normal;
   font-size: 128px;
-  line-height: 128px;
+  line-height: 64px;
+}
+
+.subtitle {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 48px;
+  line-height: 48px;
 }
 
 .large-text {
@@ -126,6 +135,8 @@ body {
   height: 100vh;
   z-index: -10;
   background-size: cover;
+  filter: grayscale(80%);
+
 }
 
 .catalog-yt-video .video-responsive {

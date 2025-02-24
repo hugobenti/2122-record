@@ -9,24 +9,14 @@ export interface IPortfolioItem {
 }
 
 const portfolioMock: IPortfolioItem[] = [
-  {
-    title: "20 Mil Léguas (Exoge - Prod. O SKR)",
-    link: "https://www.youtube.com/watch?v=XVO8lixHmCM",
-    description:
-      "Projeto de Rap (Single; Boom Bap) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Registro, Distribuição, Mixagem, Masterização, Artes Visuais (Lyric Video, Capa e Canvas) e Marketing Digital inteiramente desenvolvidos pela 2122.",
-  },
+
   {
     title: "INTERGALÁCTICA (Exoge - Prod. O SKR)",
     link: "https://www.youtube.com/watch?v=yl1qE9G4fog",
     description:
       "Projeto de Rap (Single; Boom Bap) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Registro, Distribuição, Mixagem, Masterização, Artes Visuais (Lyric Video, Capa e Canvas) e Marketing Digital inteiramente desenvolvidos pela 2122.",
   },
-  {
-    title: "Django (Exoge e El Kali BMC - Prod. O SKR e RF Beats Unit Rap)",
-    link: "https://www.youtube.com/watch?v=Yoa7uOgzoXE",
-    description:
-      "Projeto de Rap (Single; Drill) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Registro, Distribuição, Mixagem, Masterização, Artes Visuais (Lyric Video, Capa e Canvas) e Marketing Digital inteiramente desenvolvidos pela 2122.",
-  },
+ 
   {
     title: "Cidade (Exoge - Prod. O SKR)",
     link: "https://www.youtube.com/watch?v=hDDxd3t7o-s",
@@ -34,20 +24,8 @@ const portfolioMock: IPortfolioItem[] = [
       "Projeto de Rap (Single; Boom Bap) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Registro, Distribuição, Mixagem, Masterização, Artes Visuais (Lyric Video, Capa e Canvas) e Marketing Digital inteiramente desenvolvidos pela 2122.",
   },
   {
-    title: "EP Fora de Órbita (Exoge - Prod. O SKR)",
-    link: "https://www.youtube.com/watch?v=aEIqI9DcT4k&list=PLCEkakiXsS955GMdmtzDePqvo-u7aGi48",
-    description:
-      "Projeto de Rap (EP; Boom Bap) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Mixagem, Masterização e Artes Visuais (Vídeo Conceito e Capa) e inteiramente desenvolvidos pela 2122.",
-  },
-  {
-    title: "EP Em Meio ao Caos (Exoge - Prod. O SKR)",
-    link: "https://www.youtube.com/watch?v=6jBOOlyrKXY&list=PLCEkakiXsS94fwClABGwpvTvSnZ8HOpwd",
-    description:
-      "Projeto de Rap (EP; Boom Bap) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Mixagem, Masterização e Artes Visuais (Vídeo Conceito e Capa) e inteiramente desenvolvidos pela 2122.",
-  },
-  {
     title: "EP A Força do Destino (Exoge - Prod. O SKR)",
-    link: "https://www.youtube.com/watch?v=tD22I2w7HGU&list=PLCEkakiXsS95RNiMcjjKZQVkoJxkCjqUH",
+    link: "https://www.youtube.com/watch?v=tD22I2w7HGU",
     description:
       "Projeto de Rap (EP; Boom Bap) interpretado por Exoge e produzido por O SKR. Captação, Produção Musical, Letra, Registro, Distribuição, Mixagem, Masterização e Artes Visuais (Vídeo Conceito e Capa) e inteiramente desenvolvidos pela 2122.",
   },

@@ -4,52 +4,44 @@ import { useAppContext } from '../../context/AppContext';
 
 interface BeatStyle {
   name: string;
-  description: string;
+  description?: string;
   videos: string[];
   playlist: string;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 const catalogData: BeatStyle[] = [
   {
-    name: 'Hip Hop',
-    description: 'Estilo com batidas marcantes e letras de rua.',
+    name: 'Boom Bap',
     videos: [
-      'https://www.youtube.com/watch?v=abc123',
-      'https://www.youtube.com/watch?v=abc124',
-      'https://www.youtube.com/watch?v=abc125'
+      'www.youtube.com/watch?v=oiljLH5grIU&list=PLe2n3xCXYtXVUMmXzm1Lm8pWX6pkMSHas&index=12',
+      'www.youtube.com/watch?v=2GNgRVdUB3w&list=PLe2n3xCXYtXVUMmXzm1Lm8pWX6pkMSHas&index=5',
+      'www.youtube.com/watch?v=b9V2Bek4RKQ&list=PLe2n3xCXYtXVUMmXzm1Lm8pWX6pkMSHas&index=4'
     ],
-    playlist: 'https://www.youtube.com/playlist?list=hiphopPlaylist'
+    playlist: 'https://www.youtube.com/playlist?list=PLe2n3xCXYtXVUMmXzm1Lm8pWX6pkMSHas'
   },
   {
     name: 'Trap',
-    description: 'Batidas pesadas e ritmos envolventes para festas.',
     videos: [
-      'https://www.youtube.com/watch?v=def456',
-      'https://www.youtube.com/watch?v=def457',
-      'https://www.youtube.com/watch?v=def458'
+      'www.youtube.com/watch?v=KoO-muqpcQw&list=PLe2n3xCXYtXUoeBJsbcIdnc9Peln0uBw4&index=26',
+      'www.youtube.com/watch?v=ObK5oUMamNc&list=PLe2n3xCXYtXUoeBJsbcIdnc9Peln0uBw4&index=11',
+      'www.youtube.com/watch?v=n6yrzWRtKGI&list=PLe2n3xCXYtXUoeBJsbcIdnc9Peln0uBw4&index=168'
     ],
-    playlist: 'https://www.youtube.com/playlist?list=trapPlaylist'
+    playlist: 'https://www.youtube.com/playlist?list=PLe2n3xCXYtXUoeBJsbcIdnc9Peln0uBw4'
   },
-  {
-    name: 'R&B',
-    description: 'Suave e melódico, perfeito para momentos de relax.',
-    videos: [
-      'https://www.youtube.com/watch?v=ghi789',
-      'https://www.youtube.com/watch?v=ghi790',
-      'https://www.youtube.com/watch?v=ghi791'
-    ],
-    playlist: 'https://www.youtube.com/playlist?list=rnbPlaylist'
-  },
-  {
-    name: 'Funk',
-    description: 'Energia pura com grooves que contagiam.',
-    videos: [
-      'https://www.youtube.com/watch?v=jkl012',
-      'https://www.youtube.com/watch?v=jkl013',
-      'https://www.youtube.com/watch?v=jkl014'
-    ],
-    playlist: 'https://www.youtube.com/playlist?list=funkPlaylist'
-  }
+ 
 ];
 
 const Catalog: React.FC = () => {
@@ -83,12 +75,12 @@ const Catalog: React.FC = () => {
               {data.description}
             </p>
             <div
-              className={`flex space-x-4 overflow-x-auto pb-4 transition-all duration-1000 delay-[1500ms] ${
+              className={`flex space-x-4 overflow-x-auto pb-4 transition-all duration-1000 delay-150 ${
                 animations.catalog ? "opacity-100" : "opacity-0"
               }`}
             >
               {data.videos.map((video, idx) => (
-                <div key={idx} className="min-w-[320px]">
+                <div key={idx} className="min-w-[320px] grow">
                   <div className="border p-4 rounded-md bg-stone-900 border-stone-500 shadow-lg">
                     <YoutubeEmbed
                       embedId={video.replace("https://www.youtube.com/watch?v=", "")}

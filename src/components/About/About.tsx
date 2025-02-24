@@ -13,7 +13,7 @@ const About: React.FC = () => {
       <section className="py-4 bg-zinc-800">
         <div className="md:px-48 sm:px-24 px-8">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-12 text-stone-100">
+            <h2 className="text-3xl font-bold mb-12 text-purple-100">
               Conheça a 2122
             </h2>
             <p className="text-lg text-stone-300 mx-auto">
@@ -89,16 +89,16 @@ const About: React.FC = () => {
             <div className="scale-[1.5] hover:scale-[1.7] transition-all duration-1000">
               <AnimatePolvo />
             </div>
-            <button className="z-10 group rounded-lg text-center text-stone-100 px-6 py-4 bg-stone-800 opacity-80 hover:opacity-100 transition-all hover:bg-stone-600 hover:text-stone-200 cursor-pointer mt-8">
-              Saiba mais
+            <button className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8">
+              Fale com a gente
             </button>
           </div>
         </div>
 
         {/* Botão para resoluções pequenas e médias – exibido fora do grid */}
         <div className="block lg:hidden mt-8 mx-4 text-center">
-          <button className=" w-full z-10 group rounded-lg text-center text-stone-100 px-6 py-4 bg-stone-800 opacity-80 hover:opacity-100 transition-all hover:bg-stone-600 hover:text-stone-200 cursor-pointer">
-            Saiba mais
+          <button className=" w-full z-10 group rounded-lg text-center text-stone-100 px-6 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer">
+            Fale com a gente
           </button>
         </div>
       </section>
