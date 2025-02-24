@@ -6,13 +6,14 @@
 
 @font-face {
   font-family: "DeadJim";
-  src: url("./assets/fonts/deadjim.tff") format("truetype");
+  src: url("./deadjim.tff") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-
-p, h3, a {
+p,
+h3,
+a {
   font-family: "Quicksand", sans-serif;
 }
 
@@ -52,12 +53,12 @@ body {
   font-size: 48px;
   line-height: 48px;
 }
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .subtitle {
     font-size: 32px;
     line-height: 32px;
-  font-weight: 500;
-  padding: 4px 12px;
+    font-weight: 500;
+    padding: 4px 12px;
   }
 }
 
@@ -145,7 +146,6 @@ body {
   z-index: -10;
   background-size: cover;
   filter: grayscale(80%);
-
 }
 
 .catalog-yt-video .video-responsive {

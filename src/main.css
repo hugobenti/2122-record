@@ -1007,10 +1007,6 @@ video {
   --tw-bg-opacity: 0.9;
 }
 
-.fill-white {
-  fill: #fff;
-}
-
 .fill-zinc-800 {
   fill: #27272a;
 }
@@ -1310,14 +1306,16 @@ video {
 @font-face {
   font-family: "DeadJim";
 
-  src: url("./assets/fonts/deadjim.tff") format("truetype");
+  src: url("./deadjim.tff") format("truetype");
 
   font-weight: normal;
 
   font-style: normal;
 }
 
-p, h3, a {
+p,
+h3,
+a {
   font-family: "Quicksand", sans-serif;
 }
 
@@ -1358,7 +1356,7 @@ body {
   line-height: 48px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .subtitle {
     font-size: 32px;
     line-height: 32px;
