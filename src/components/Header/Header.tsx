@@ -1,7 +1,7 @@
 // Header.tsx
 import React, { useState } from "react";
 import UseHeader from "./useHeader";
-import MenuIcon from "../../assets/svgIcon/MenuIcon";
+import MenuIcon from "./MenuIcon";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {

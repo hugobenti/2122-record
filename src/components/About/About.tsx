@@ -1,7 +1,6 @@
 import React from "react";
 import AnimatePolvo from "../../assets/AnimatePolvo";
 import { useAppContext } from "../../context/AppContext";
-import CommaIcon from "../../assets/svgIcon/CommaSvg";
 import SectionSeparator from "../Separator/SectionSeparator";
 
 const About: React.FC = () => {
