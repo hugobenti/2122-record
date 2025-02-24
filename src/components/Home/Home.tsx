@@ -10,7 +10,7 @@ const Home = () => {
     <div className={`md:px-48 sm:px-24 px-8 w-full pb-12`} ref={homeRef}>
       <div className="flex w-full items-center justify-center">
         <div className="video-responsive">
-          <YoutubeEmbed embedId="IwQ2eFQwdoE" />
+          <YoutubeEmbed embedId="oiljLH5grIU" />
         </div>
       </div>
     </div>
