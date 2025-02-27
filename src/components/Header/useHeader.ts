@@ -4,7 +4,7 @@ import { useAppContext } from '../../context/AppContext';
 
 interface IUseHeader {
   selectorPosition: number;
-  headerRefs: React.RefObject<HTMLAnchorElement>[];
+  headerRefs: React.RefObject<HTMLButtonElement>[];
   setSelectorPosition: React.Dispatch<React.SetStateAction<number>>;
   headerOptions: string[];
   activeHeaderIndex: number;
@@ -15,12 +15,12 @@ function UseHeader(initialValue: number = 0): IUseHeader {
   const [activeHeaderIndex, setActiveHeaderIndex] = useState<number>(0);
 
   // Refs para os links do header
-  const headerRefs: React.RefObject<HTMLAnchorElement>[] = [
-    useRef<HTMLAnchorElement>(null),
-    useRef<HTMLAnchorElement>(null),
-    useRef<HTMLAnchorElement>(null),
-    useRef<HTMLAnchorElement>(null),
-    useRef<HTMLAnchorElement>(null),
+  const headerRefs: React.RefObject<HTMLButtonElement>[] = [
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
   ];
 
   const headerOptions = ["Home", "Sobre", "Serviços", "Catalogo", "Portfolio"];

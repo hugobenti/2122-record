@@ -3,7 +3,11 @@ import { useAppContext } from "../../context/AppContext";
 
 const Services = () => {
   const { servicesRef, animations } = useAppContext();
-  const [contentExpanded, setContentExpanded] = useState<boolean[]>([false, false, false]);
+  const [contentExpanded, setContentExpanded] = useState<boolean[]>([
+    false,
+    false,
+    false,
+  ]);
 
   // Cria refs individuais para cada seção de serviço
   const musicSectionRef = useRef<HTMLDivElement>(null);
@@ -11,7 +15,10 @@ const Services = () => {
   const juridicoSectionRef = useRef<HTMLDivElement>(null);
 
   // Função para lidar com o clique "Veja mais" e posicionar a seção
-  const handleVejaMais = (index: number, sectionRef: React.RefObject<HTMLDivElement>) => {
+  const handleVejaMais = (
+    index: number,
+    sectionRef: React.RefObject<HTMLDivElement>
+  ) => {
     setContentExpanded((prev) => {
       const newContentExpanded = [...prev];
       newContentExpanded[index] = !prev[index];
@@ -24,7 +31,10 @@ const Services = () => {
         const yCoordinate =
           sectionRef.current.getBoundingClientRect().top + window.pageYOffset;
         const headerOffset = 80; // Substitua 80 pelo tamanho real do seu header fixo
-        window.scrollTo({ top: yCoordinate - headerOffset, behavior: "smooth" });
+        window.scrollTo({
+          top: yCoordinate - headerOffset,
+          behavior: "smooth",
+        });
       }
     }, 300);
   };
@@ -38,7 +48,7 @@ const Services = () => {
       {/* Centraliza o conteúdo e limita a largura em telas maiores */}
       <div className="max-w-7xl mx-auto">
         <p
-          className={`large-text text-purple-200 pb-8 transition-all duration-200 ${
+          className={`large-text text-violet-300 pb-8 transition-all duration-200 ${
             animations.services ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -64,25 +74,24 @@ const Services = () => {
             }`}
           >
             Criar música é mais do que uma paixão; é uma jornada que exige
-            dedicação e técnica. Na 2122, entendemos que o amor pela arte deve ser
-            acompanhado das ferramentas certas para transformar ideias em obras
-            de alta qualidade.
+            dedicação e técnica. Na 2122, entendemos que o amor pela arte deve
+            ser acompanhado das ferramentas certas para transformar ideias em
+            obras de alta qualidade.
           </p>
           <div
             className={`duration-1000 delay-[1500ms] ${
               animations.services ? "opacity-100" : "opacity-0"
             }`}
           >
-            <a
+            <button
+              name={`service-button-more-1`}
               className={`block text-right pl-4 hover:text-violet-300 cursor-pointer medium-text-bold ${
-                !contentExpanded[0]
-                  ? "text-violet-500"
-                  : "text-violet-300"
+                !contentExpanded[0] ? "text-violet-500" : "text-violet-300"
               }`}
               onClick={() => handleVejaMais(0, musicSectionRef)}
             >
               Veja mais
-            </a>
+            </button>
           </div>
           <div
             className={`medium-text pb-2 w-full overflow-hidden transition-all duration-1000 pt-2 ${
@@ -92,7 +101,8 @@ const Services = () => {
             }`}
           >
             <p className="medium-text pb-2">
-              Oferecemos um suporte completo para cada etapa da produção musical:
+              Oferecemos um suporte completo para cada etapa da produção
+              musical:
             </p>
             <ul>
               <li className="ml-6 mt-2 medium-text">
@@ -147,16 +157,15 @@ const Services = () => {
               animations.services ? "opacity-100" : "opacity-0"
             }`}
           >
-            <a
+                <button
+                name={`service-button-more-2`}
               className={`block text-right pl-4 hover:text-violet-300 cursor-pointer medium-text-bold ${
-                !contentExpanded[1]
-                  ? "text-violet-500"
-                  : "text-violet-300"
+                !contentExpanded[1] ? "text-violet-500" : "text-violet-300"
               }`}
               onClick={() => handleVejaMais(1, marketingSectionRef)}
             >
               Veja mais
-            </a>
+            </button>
           </div>
           <div
             className={`medium-text pb-2 w-full overflow-hidden transition-all duration-1000 pt-2 ${
@@ -183,14 +192,15 @@ const Services = () => {
                 identidade visual e destacam seu trabalho;
               </li>
               <li className="ml-6 mt-2 medium-text">
-                <strong>• Contato com criadores de conteúdo e curadores</strong>,
-                ampliando sua rede e alcance.
+                <strong>• Contato com criadores de conteúdo e curadores</strong>
+                , ampliando sua rede e alcance.
               </li>
             </ul>
             <p className="medium-text pb-2 pt-4">
-              Acreditamos que a divulgação não pode ser um obstáculo para artistas
-              independentes. Com as práticas certas e uma execução profissional,
-              garantimos que sua música seja ouvida, reconhecida e valorizada.
+              Acreditamos que a divulgação não pode ser um obstáculo para
+              artistas independentes. Com as práticas certas e uma execução
+              profissional, garantimos que sua música seja ouvida, reconhecida e
+              valorizada.
             </p>
           </div>
         </div>
@@ -213,26 +223,25 @@ const Services = () => {
                 : "-translate-x-24 opacity-0"
             }`}
           >
-            A arte é o centro da sua carreira, mas o conhecimento jurídico é o que
-            protege o seu trabalho e garante sua estabilidade. Na 2122, cuidamos
-            do que parece complicado, para que você possa focar no que realmente
-            importa.
+            A arte é o centro da sua carreira, mas o conhecimento jurídico é o
+            que protege o seu trabalho e garante sua estabilidade. Na 2122,
+            cuidamos do que parece complicado, para que você possa focar no que
+            realmente importa.
           </p>
           <div
             className={`duration-1000 delay-[1500ms] ${
               animations.services ? "opacity-100" : "opacity-0"
             }`}
           >
-            <a
+            <button
+                name={`service-button-more-2`}
               className={`block text-right pl-4 hover:text-violet-300 cursor-pointer medium-text-bold ${
-                !contentExpanded[2]
-                  ? "text-violet-500"
-                  : "text-violet-300"
+                !contentExpanded[2] ? "text-violet-500" : "text-violet-300"
               }`}
               onClick={() => handleVejaMais(2, juridicoSectionRef)}
             >
               Veja mais
-            </a>
+            </button>
           </div>
           <div
             className={`medium-text pb-2 w-full overflow-hidden transition-all duration-1000 pt-2 ${
@@ -246,8 +255,8 @@ const Services = () => {
             </p>
             <ul>
               <li className="ml-6 mt-2 medium-text">
-                <strong>• Registro autoral</strong> para proteger suas composições
-                e garantir que seus direitos sejam respeitados;
+                <strong>• Registro autoral</strong> para proteger suas
+                composições e garantir que seus direitos sejam respeitados;
               </li>
               <li className="ml-6 mt-2 medium-text">
                 <strong>• Análise e elaboração de contratos</strong>, para
@@ -259,15 +268,15 @@ const Services = () => {
                 publicitárias.
               </li>
               <li className="ml-6 mt-2 medium-text">
-                <strong>• Contato com criadores de conteúdo e curadores</strong>,
-                ampliando sua rede e alcance.
+                <strong>• Contato com criadores de conteúdo e curadores</strong>
+                , ampliando sua rede e alcance.
               </li>
             </ul>
             <p className="medium-text pb-2 pt-4">
-              Nosso objetivo é garantir que você não seja prejudicado por falta de
-              conhecimento ou por contratos desfavoráveis. Trabalhamos com ética e
-              transparência para proteger o que há de mais precioso: o sonho de
-              viver de sua arte.
+              Nosso objetivo é garantir que você não seja prejudicado por falta
+              de conhecimento ou por contratos desfavoráveis. Trabalhamos com
+              ética e transparência para proteger o que há de mais precioso: o
+              sonho de viver de sua arte.
             </p>
           </div>
         </div>
