@@ -51,7 +51,7 @@ const Catalog: React.FC = () => {
     <div ref={catalogRef} id="catalog" className="py-6 px-8 sm:px-24 md:px-48">
       <div className="max-w-7xl mx-auto">
         <p
-          className={`large-text text-stone-200 pb-8 transition-all duration-200 ${
+          className={`large-text text-violet-300 pb-8 transition-all duration-200 ${
             animations.catalog ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -61,7 +61,7 @@ const Catalog: React.FC = () => {
         {catalogData.map((data, index) => (
           <div key={index} className="mb-12 border-b border-stone-700 pb-8">
             <p
-              className={`text-white text-2xl md:text-3xl font-bold capitalize pb-4 transition-all duration-1000 delay-150 ${
+              className={`text-purple-200 large-title capitalize pb-4 transition-all duration-1000 delay-150 ${
                 animations.catalog ? "translate-x-0 opacity-100" : "-translate-x-24 opacity-0"
               }`}
             >

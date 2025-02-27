@@ -55,7 +55,7 @@ const Portfolio: React.FC = () => {
   return (
     <div ref={portfolioRef} id="portfolio" className="py-6 px-8 sm:px-24 md:px-48">
           <p
-        className={`large-text text-stone-200 pb-12 transition-all duration-200 ${
+        className={`large-text text-violet-300 pb-12 transition-all duration-200 ${
           animations.portfolio ? "opacity-100" : "opacity-0"
         }`}
       >Portfolio</p>
@@ -82,10 +82,10 @@ const Portfolio: React.FC = () => {
               </div>
               {/* Container do texto: ocupa o espaço restante */}
               <div className="w-full md:flex-1 mt-4 md:mt-0">
-                <p className="text-white text-2xl md:text-3xl font-bold capitalize">
+                <p className="text-purple-200 large-title capitalize">
                   {item.title}
                 </p>
-                <p className="text-white text-base md:text-xl mt-4">
+                <p className="text-white medium-text mt-4">
                   {item.description}
                 </p>
               </div>

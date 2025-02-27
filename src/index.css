@@ -5,8 +5,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 @font-face {
-  font-family: "DeadJim";
-  src: url("./deadjim.tff") format("truetype");
+  font-family: "Elements";
+  src: url("./assets/Elements.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .extra-large-title {
-  font-family: "DeadJim";
+  font-family: "Elements";
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -72,7 +72,7 @@ body {
 }
 
 .header-title {
-  font-family: "DeadJim" !important;
+  font-family: "Elements" !important;
 }
 
 .large-title,
@@ -145,7 +145,8 @@ body {
   height: 100vh;
   z-index: -10;
   background-size: cover;
-  filter: grayscale(80%);
+  filter: grayscale(80%) brightness(70%);
+
 }
 
 .catalog-yt-video .video-responsive {

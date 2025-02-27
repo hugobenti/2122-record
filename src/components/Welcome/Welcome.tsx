@@ -10,9 +10,9 @@ const Welcome = () => {
   const [isInView, setIsInView] = useState<boolean>(true);
 
   // Configurações de tempo (em milissegundos)
-  const exitDuration = 1000; // Duração da animação de saída
-  const enterDuration = 1000; // Duração da animação de entrada
-  const cycleDuration = 5000; // Intervalo total para atualizar a mensagem
+  const exitDuration = 500; // Duração da animação de saída
+  const enterDuration = 500; // Duração da animação de entrada
+  const cycleDuration = 6000; // Intervalo total para atualizar a mensagem
 
   // Atualiza a mensagem escolhendo aleatoriamente uma nova frase
   const updatePhrase = () => {
@@ -88,9 +88,12 @@ const Welcome = () => {
 
   // Define as classes de animação com base no estado atual
   const animationClasses =
-    animationState === "visible" || animationState === "entering"
-      ? "translate-x-0 opacity-100"
-      : "-translate-x-3/4 opacity-0";
+    animationState === "visible" 
+      ? "translate-x-0 opacity-100" :
+       animationState === "exiting"
+      ? "translate-x-full opacity-0"
+      
+      : "-translate-x-full opacity-0";
 
   return (
     <div
@@ -105,7 +108,7 @@ const Welcome = () => {
       {/* Container fixo para a mensagem que mantém o posicionamento */}
       <div className="w-full md:max-w-[40%] overflow-hidden text-center md:text-left">
         <div
-          className={`subtitle pt-2 uppercase text-violet-400 mb-5 transition-all duration-1000 ${animationClasses}`}
+          className={`subtitle pt-2 captalize text-violet-400 mb-5 transition-all duration-500 ${animationClasses}`}
         >
           {isMobile ? welcomeText : formatWelcomeText(welcomeText)}
         </div>

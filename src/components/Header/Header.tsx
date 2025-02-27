@@ -5,7 +5,8 @@ import MenuIcon from "./MenuIcon";
 import { useAppContext } from "../../context/AppContext";
 
 const Header = () => {
-  const { headerOptions, headerRefs, selectorPosition, activeHeaderIndex, setSelectorPosition } = UseHeader();
+  const { headerOptions, headerRefs, activeHeaderIndex, setSelectorPosition } =
+    UseHeader();
   const { handleScroll } = useAppContext();
 
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
@@ -18,12 +19,15 @@ const Header = () => {
           {/* Menu desktop */}
           <nav className="hidden sm:flex gap-6 z-10 relative">
             {headerOptions.map((value, index) => (
-              <a
+              <button
+                name={`header-btn-${index}`}
                 ref={headerRefs[index]}
                 key={`header-${value}`}
                 // Aplica sublinhado se este for o link ativo
                 className={`pt-3 cursor-pointer border-b-[3px] transition-all text-slate-300 hover:text-violet-400 font-semibold text-lg ${
-                  activeHeaderIndex === index ? " border-violet-400 text-violet-400" : "border-transparent"
+                  activeHeaderIndex === index
+                    ? " border-violet-400 text-violet-400"
+                    : "border-transparent"
                 }`}
                 onMouseEnter={() => {
                   const currentRef = headerRefs[index].current;
@@ -34,13 +38,14 @@ const Header = () => {
                 onClick={() => handleScroll(value)}
               >
                 {value}
-              </a>
+              </button>
             ))}
           </nav>
           {/* Botão mobile */}
           <button
+            name="hamburger-menu-btn"
             className="sm:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-stone-700 p-2"
-            onClick={() => setMenuCollapsed(prev => !prev)}
+            onClick={() => setMenuCollapsed((prev) => !prev)}
           >
             <MenuIcon stroke="#FFFFFF" />
           </button>
@@ -56,8 +61,9 @@ const Header = () => {
           style={{ top: "6rem" }}
         >
           {headerOptions.map((value, index) => (
-            <a
-              key={`mobile-header-${value}`}
+            <button
+            name={`header-mobile-btn-${index}`}
+            key={`mobile-header-${value}`}
               className="block py-3 px-6 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg"
               onClick={() => {
                 handleScroll(value);
@@ -65,7 +71,7 @@ const Header = () => {
               }}
             >
               {value}
-            </a>
+            </button>
           ))}
         </div>
       </div>

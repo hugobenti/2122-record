@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 
-export type AnimationKeys = "welcome" | "services" | "catalog" | "home" | "portfolio";
+export type AnimationKeys = "welcome" | "services" | "catalog" | "home" | "portfolio" | "artist";
 // Interface para os dados do contexto
 export interface AppContextData {
   animations: IAnimations;
@@ -16,6 +16,7 @@ export interface AppContextData {
   catalogRef: React.RefObject<HTMLDivElement>;
   portfolioRef: React.RefObject<HTMLDivElement>;
   aboutRef: React.RefObject<HTMLDivElement>;
+  artistRef: React.RefObject<HTMLDivElement>;
   homeRef: React.RefObject<HTMLDivElement>;
   handleScroll: (step: string) => void;
 }
@@ -26,6 +27,7 @@ export interface IAnimations {
   catalog: boolean;
   portfolio: boolean;
   home: boolean;
+  artist: boolean;
 }
 
 // Tipos para as props do provider
@@ -43,6 +45,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const catalogRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
+  const artistRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
   const [animations, setAnimations] = useState<IAnimations>({
     welcome: false,
@@ -50,6 +53,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     catalog: false,
     home: false,
     portfolio: false,
+    artist: false,
   });
 
   const handleShowAnimation = (id: AnimationKeys) => {
@@ -103,6 +107,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         });
         fixHeaderScrollPosition(portfolioRef);
         return;
+        case "artist":
+          artistRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          fixHeaderScrollPosition(artistRef);
+          return;
     }
   };
 
@@ -139,7 +150,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     if (homeRef.current) {
       observer.observe(homeRef.current);
     }
-
+    if (artistRef.current) {
+      observer.observe(artistRef.current);
+    }
     return () => {
       if (welcomeRef.current) {
         observer.unobserve(welcomeRef.current);
@@ -156,6 +169,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       if (portfolioRef.current) {
         observer.unobserve(portfolioRef.current);
       }
+      if (artistRef.current) {
+        observer.unobserve(artistRef.current);
+      }
     };
   }, []); // Apenas a primeira renderização
 
@@ -167,6 +183,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         servicesRef,
         portfolioRef,
         homeRef,
+        artistRef,
         catalogRef,
         handleScroll,
         aboutRef,
