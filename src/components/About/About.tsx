@@ -88,7 +88,9 @@ const About: React.FC = () => {
             <div className="scale-[1.5] hover:scale-[1.7] transition-all duration-1000">
               <AnimatePolvo />
             </div>
-            <button className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8">
+            <button
+            onClick={ () => window.open('https://www.instagram.com/direct/t/2122producoes/', '_blank')}
+            className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8">
               Fale com a gente
             </button>
           </div>

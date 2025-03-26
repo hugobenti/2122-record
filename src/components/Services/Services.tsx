@@ -195,6 +195,7 @@ const Services = () => {
                 <strong>• Contato com criadores de conteúdo e curadores</strong>
                 , ampliando sua rede e alcance.
               </li>
+              
             </ul>
             <p className="medium-text pb-2 pt-4">
               Acreditamos que a divulgação não pode ser um obstáculo para
@@ -266,10 +267,6 @@ const Services = () => {
                 <strong>• Consultoria jurídica</strong>, com orientações claras
                 sobre direitos autorais, contratos de shows e campanhas
                 publicitárias.
-              </li>
-              <li className="ml-6 mt-2 medium-text">
-                <strong>• Contato com criadores de conteúdo e curadores</strong>
-                , ampliando sua rede e alcance.
               </li>
             </ul>
             <p className="medium-text pb-2 pt-4">
