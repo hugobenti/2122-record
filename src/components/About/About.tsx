@@ -5,7 +5,15 @@ import SectionSeparator from "../Separator/SectionSeparator";
 
 const About: React.FC = () => {
   const { aboutRef } = useAppContext();
+  const handleInstagramClick = () => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+    const url = isMobile
+      ? "https://www.instagram.com/2122producoes/" // Melhor para mobile
+      : "https://www.instagram.com/direct/t/2122producoes/"; // Funciona melhor no desktop
+
+    window.open(url, "_blank");
+  };
   return (
     <div className="text-stone-200 z-10" ref={aboutRef}>
       {/* Seção de introdução */}
@@ -89,8 +97,9 @@ const About: React.FC = () => {
               <AnimatePolvo />
             </div>
             <button
-            onClick={ () => window.open('https://www.instagram.com/direct/t/2122producoes/', '_blank')}
-            className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8">
+              onClick={handleInstagramClick}
+              className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8"
+            >
               Fale com a gente
             </button>
           </div>
