@@ -88,17 +88,31 @@ const About: React.FC = () => {
             <div className="scale-[1.5] hover:scale-[1.7] transition-all duration-1000">
               <AnimatePolvo />
             </div>
-            <a
-            href="https://www.instagram.com/2122producoes/" target="_blank" rel="noopener noreferrer" 
-            className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8">
+            <button
+              onClick={() =>
+                window.open(
+                  "https://www.instagram.com/direct/t/2122producoes/",
+                  "_blank"
+                )
+              }
+              className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8"
+            >
               Fale com a gente
-            </a>
+            </button>
           </div>
         </div>
 
         {/* Botão para resoluções pequenas e médias – exibido fora do grid */}
         <div className="block lg:hidden mt-8 mx-4 text-center">
-          <button className=" w-full z-10 group rounded-lg text-center text-stone-100 px-6 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer">
+          <button
+            onClick={() =>
+              window.open(
+                "https://www.instagram.com/direct/t/2122producoes/",
+                "_blank"
+              )
+            }
+            className=" w-full z-10 group rounded-lg text-center text-stone-100 px-6 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer"
+          >
             Fale com a gente
           </button>
         </div>
