@@ -107,7 +107,7 @@ const About: React.FC = () => {
           <button
             onClick={() =>
               window.open(
-                "https://www.instagram.com/direct/t/2122producoes/",
+                "https://www.instagram.com/2122producoes/",
                 "_blank"
               )
             }
