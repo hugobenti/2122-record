@@ -89,7 +89,7 @@ const About: React.FC = () => {
               <AnimatePolvo />
             </div>
             <a
-            href="https://www.instagram.com/direct/t/johndoe/" target="_blank" rel="noopener noreferrer" 
+            href="https://www.instagram.com/2122producoes/" target="_blank" rel="noopener noreferrer" 
             className="z-10 group rounded-lg text-center text-stone-100 px-12 py-4 bg-purple-800 opacity-80 hover:opacity-100 transition-all hover:bg-purple-600 hover:text-stone-200 cursor-pointer mt-8">
               Fale com a gente
             </a>
