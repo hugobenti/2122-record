@@ -11,31 +11,6 @@ import About from "./components/About/About";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Footer from "./components/Footer/Footer";
 function App() {
-  const [backgroundPosition, setBackgroundPosition] = useState("center 0");
-
-  // const handleScroll = () => {
-  //   // Pega a quantidade de scroll vertical
-  //   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  //   const windowHeight = window.innerHeight;
-  //   const documentHeight = document.documentElement.scrollHeight;
-
-  //   // Calcula a posição do background com base no scroll
-  //   const scrollPercent =
-  //     ((scrollTop * 1.25) / (documentHeight - windowHeight)) * 100;
-  //   const yPos = Math.min(scrollPercent, 100); // Limita em 100% para não extrapolar
-
-  //   // Atualiza a posição do background
-  //   setBackgroundPosition(`center ${yPos}%`);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Remove o event listener quando o componente desmontar
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
 
   return (
     <div className="max-w-[100vw] overflow-x-hidden">
