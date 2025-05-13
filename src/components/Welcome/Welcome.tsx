@@ -98,7 +98,7 @@ const Welcome = () => {
   return (
     <div
       id="welcome"
-      className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 pb-12"
+      className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-16 pb-12"
       ref={welcomeRef}
     >
       {/* Número fixo "2122" */}
