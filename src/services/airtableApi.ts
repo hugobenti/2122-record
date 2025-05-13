@@ -7,6 +7,7 @@
 export interface AirtableRecord {
     id: string;
     fields: {
+      titulo_pagina?: string;
       titulo?: string;
       artistas?: string;
       descricao?: string;

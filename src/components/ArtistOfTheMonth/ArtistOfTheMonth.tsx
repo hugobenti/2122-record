@@ -11,6 +11,7 @@ import { TABLE_ARTISTA_MES } from "../../services/airtableApi";
  * baseando-se nos campos reais do Airtable (titulo, artistas, descricao, link).
  */
 export interface IArtistOfTheMonth {
+  titulo_pagina: string;
   titulo: string;
   artistas: string;
   descricao: string;
@@ -34,6 +35,7 @@ const ArtistOfTheMonth: React.FC = () => {
   if (records && records.length > 0) {
     const first = records[0].fields;
     artistData = {
+      titulo_pagina: first.titulo_pagina || "",
       titulo: first.titulo || "",
       artistas: first.artistas || "",
       descricao: first.descricao || "",
@@ -45,13 +47,13 @@ const ArtistOfTheMonth: React.FC = () => {
     <div id="artist" ref={artistRef}>
       <div className="space-y-8">
         {/* Em telas menores que xl, exibe o título acima do vídeo */}
-        <div className="block xl:hidden">
+        <div className="flex w-full justify-center">
           <p
-            className={`large-text text-violet-300 pb-8 transition-all duration-200 ${
+            className={`large-text text-violet-300 pb-2 transition-all duration-200 ${
               animations.artist ? "opacity-100" : "opacity-0"
             }`}
           >
-            Artista do Mês
+            {artistData?.titulo_pagina}
           </p>
         </div>
 
@@ -66,7 +68,7 @@ const ArtistOfTheMonth: React.FC = () => {
         {fetched && artistData && (
           <div
             key={artistData.titulo}
-            className="flex flex-col xl:flex-row items-center w-full gap-4 lg:gap-12"
+            className="flex flex-col xl:flex-row items-end w-full gap-4 lg:gap-12 "
           >
             <div className="w-full xl:w-[540px] flex-shrink-0">
               <YoutubeEmbed
@@ -79,13 +81,6 @@ const ArtistOfTheMonth: React.FC = () => {
 
             {/* Texto */}
             <div className="w-full md:flex-1 mt-4 md:mt-0">
-              <p
-                className={`hidden xl:block large-text text-violet-300 pb-8 transition-all duration-200 ${
-                  animations.artist ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                Artista do Mês
-              </p>
               <p className="text-purple-200 large-title capitalize">
                 {artistData.titulo}
               </p>
