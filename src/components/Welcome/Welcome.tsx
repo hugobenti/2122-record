@@ -98,7 +98,7 @@ const Welcome = () => {
   return (
     <div
       id="welcome"
-      className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-16 pb-12"
+      className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-24 sm:gap-12 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24"
       ref={welcomeRef}
     >
       {/* Número fixo "2122" */}
@@ -106,7 +106,7 @@ const Welcome = () => {
         <p className="extra-large-title text-stone-200">2122</p>
       </div>
       {/* Container fixo para a mensagem que mantém o posicionamento */}
-      <div className="w-full md:max-w-[40%] overflow-hidden text-center md:text-left">
+      <div className="w-full md:max-w-[45%] overflow-hidden text-center md:text-left">
         <div
           className={`subtitle pt-2 captalize text-violet-400 mb-5 transition-all duration-500 ${animationClasses}`}
         >

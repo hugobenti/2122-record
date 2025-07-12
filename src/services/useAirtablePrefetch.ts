@@ -5,7 +5,7 @@ import { getTableRecords, AirtableRecord } from "../services/airtableApi";
 
 /**
  * Opções do hook de prefetch.
- * - `tableId`: ID da tabela (ex: TABLE_ARTISTA_MES)
+ * - `tableId`: ID da tabela (ex: TABLE_FEATURED_ARTIST)
  * - `viewId`: ID opcional da view (ex: viw9qZ5iMfdt3ZeoA)
  * - `delay`: quanto tempo esperar (ms) antes de disparar o fetch
  */

@@ -24,7 +24,7 @@ export interface AirtableRecord {
   
   // IDs das suas tabelas (conforme links fornecidos)
   export const TABLE_PORTFOLIO = "tblbbnjpPS1SKVdR3";
-  export const TABLE_ARTISTA_MES = "tblP6mJLg6BE3PFsW";
+  export const TABLE_FEATURED_ARTIST = "tblP6mJLg6BE3PFsW";
   
   /**
    * Busca todos os registros de uma tabela do Airtable (usando tableId).
