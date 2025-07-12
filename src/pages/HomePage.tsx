@@ -11,10 +11,7 @@ const HomePage: React.FC = () => {
         <Welcome />
       </section>
 
-      {/* Featured Artist Section */}
-      <section className="py-16 sm:py-20 lg:py-24">
         <FeaturedArtist />
-      </section>
 
       {/* About Section */}
       <section className="py-16 sm:py-20 lg:py-24">

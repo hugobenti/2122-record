@@ -45,17 +45,13 @@ const FeaturedArtist: React.FC = () => {
 
   return (
     <div id="featuredArtist" ref={featuredArtistRef} className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
-      <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+      <div className="max-w-7xl mx-auto space-y-12 sm:space-y-8 mb-6">
         {/* Em telas menores que xl, exibe o título acima do vídeo */}
-        <div className="flex w-full justify-center">
           <p
-            className={`large-text text-violet-300 pb-6 sm:pb-8 transition-all duration-200 text-center ${
-              animations.featuredArtist ? "opacity-100" : "opacity-0"
-            }`}
+            className={`large-text text-violet-300 pb-2 sm:pb-4`}
           >
             {artistData?.titulo_pagina}
           </p>
-        </div>
 
         {/* Loading */}
         {isFetching && !fetched && (
