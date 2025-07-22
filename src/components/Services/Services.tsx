@@ -12,7 +12,7 @@ const Services = () => {
   const marketingSectionRef = useRef<HTMLDivElement>(null);
   const juridicoSectionRef = useRef<HTMLDivElement>(null);
 
-  // Função para lidar com o clique "Veja mais"
+  // Função para lidar com o clique "Leia mais"
   const handleVejaMais = useCallback((index: number) => {
     setContentExpanded((prev) => {
       const newContentExpanded = [...prev];
@@ -66,7 +66,7 @@ const Services = () => {
         </p>
 
         {/* Serviço: Músicas */}
-        <div ref={musicSectionRef} className="mb-12 sm:mb-16">
+        <div ref={musicSectionRef} >
           <p className="large-title text-purple-200 pb-4 sm:pb-6">
             Músicas
           </p>
@@ -84,7 +84,7 @@ const Services = () => {
               }`}
               onClick={() => handleVejaMais(0)}
             >
-              Veja mais
+              Leia mais
             </button>
           </div>
           <div
@@ -125,8 +125,8 @@ const Services = () => {
         </div>
 
         {/* Serviço: Marketing */}
-        <div ref={marketingSectionRef} className="mb-12 sm:mb-16">
-          <p className="large-title text-purple-200 pb-4 sm:pb-6 pt-8 sm:pt-12">
+        <div ref={marketingSectionRef} >
+          <p className="large-title text-purple-200 pb-4 sm:pb-6 pt-8">
             Marketing
           </p>
           <p className="medium-text text-stone-200 pb-4 sm:pb-6 w-full leading-relaxed">
@@ -142,7 +142,7 @@ const Services = () => {
               }`}
               onClick={() => handleVejaMais(1)}
             >
-              Veja mais
+              Leia mais
             </button>
           </div>
           <div
@@ -183,8 +183,8 @@ const Services = () => {
         </div>
 
         {/* Serviço: Jurídico */}
-        <div ref={juridicoSectionRef} className="mb-12 sm:mb-16">
-          <p className="large-title text-purple-200 pb-4 sm:pb-6 pt-8 sm:pt-12">
+        <div ref={juridicoSectionRef} >
+          <p className="large-title text-purple-200 pb-4 sm:pb-6 pt-8">
             Jurídico
           </p>
           <p className="medium-text text-stone-200 pb-4 sm:pb-6 w-full leading-relaxed">
@@ -200,7 +200,7 @@ const Services = () => {
               }`}
               onClick={() => handleVejaMais(2)}
             >
-              Veja mais
+              Leia mais
             </button>
           </div>
           <div
