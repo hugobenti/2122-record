@@ -12,6 +12,11 @@ export interface AirtableRecord {
       artistas?: string;
       descricao?: string;
       link?: string;
+      // Campos do catálogo
+      Nome?: string;
+      descricao_catalogo?: string;
+      Videos?: string[];
+      Playlist_link?: string;
       // se tiver mais campos, inclua aqui
     };
   }
@@ -24,7 +29,8 @@ export interface AirtableRecord {
   
   // IDs das suas tabelas (conforme links fornecidos)
   export const TABLE_PORTFOLIO = "tblbbnjpPS1SKVdR3";
-  export const TABLE_ARTISTA_MES = "tblP6mJLg6BE3PFsW";
+  export const TABLE_FEATURED_ARTIST = "tblP6mJLg6BE3PFsW";
+  export const TABLE_CATALOG = "tbl8TfB4rZ6J8mwxM";
   
   /**
    * Busca todos os registros de uma tabela do Airtable (usando tableId).
@@ -39,14 +45,25 @@ export interface AirtableRecord {
     if (viewId) {
       url += `?view=${viewId}`;
     }
+
+
+  
+    const headers: HeadersInit = {};
+    
+    if (AIRTABLE_TOKEN) {
+      headers.Authorization = `Bearer ${AIRTABLE_TOKEN}`;
+    } else {
+      console.warn('Token do Airtable não configurado. A requisição pode falhar.');
+    }
   
     const resp = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${AIRTABLE_TOKEN}`,
-      },
+      headers,
     });
   
     if (!resp.ok) {
+      const errorText = await resp.text();
+      console.error('Erro na resposta:', resp.status, resp.statusText);
+      console.error('Detalhes do erro:', errorText);
       throw new Error(`Erro ao buscar tabela ${tableId}: ${resp.statusText}`);
     }
   
