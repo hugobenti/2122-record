@@ -67,12 +67,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     if (featuredArtistRef.current) observer.observe(featuredArtistRef.current);
     if (homeRef.current) observer.observe(homeRef.current);
 
-    return () => {
-      if (welcomeRef.current) observer.unobserve(welcomeRef.current);
-      if (aboutRef.current) observer.unobserve(aboutRef.current);
-      if (featuredArtistRef.current) observer.unobserve(featuredArtistRef.current);
-      if (homeRef.current) observer.unobserve(homeRef.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (

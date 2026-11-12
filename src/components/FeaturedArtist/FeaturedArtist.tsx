@@ -19,7 +19,7 @@ export interface IFeaturedArtist {
 }
 
 const FeaturedArtist: React.FC = () => {
-  const { animations, featuredArtistRef } = useAppContext();
+  const { featuredArtistRef } = useAppContext();
 
   // Faz o prefetch da tabela "Artista em Destaque"
   const { records, isFetching, error, fetched } = useAirtablePrefetch({

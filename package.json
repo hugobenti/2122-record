@@ -21,15 +21,27 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css --watch"
+    "test": "react-scripts test --passWithNoTests",
+    "lint": "eslint src --ext .ts,.tsx --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "css": "tailwindcss -i ./src/index.css -o ./src/main.css",
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/main.css --watch",
+    "design:detect": ".claude/skills/impeccable/scripts/impeccable detect",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:jsx-a11y/recommended"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^react-router-dom$": "react-router-dom/dist/index.js",
+      "^react-router$": "react-router/dist/development/index.js",
+      "^react-router/dom$": "react-router/dist/development/dom-export.js"
+    }
   },
   "browserslist": {
     "production": [
