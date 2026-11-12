@@ -1,15 +1,17 @@
 import { createRef, useEffect, useRef, useState } from 'react';
+import type { RefObject } from 'react';
 import { services } from './Services.data';
 
 export const useServices = () => {
   const [expanded, setExpanded] = useState<boolean[]>(services.map(() => false));
   const [scrollTarget, setScrollTarget] = useState<number | null>(null);
-  const sectionRefs = useRef(services.map(() => createRef<HTMLDivElement>()));
+  const sectionRefs = useRef<RefObject<HTMLElement>[] | null>(null);
 
+  if (sectionRefs.current === null) sectionRefs.current = services.map(() => createRef<HTMLElement>());
   useEffect(() => {
     if (scrollTarget === null) return;
     const timeout = window.setTimeout(() => {
-      const section = sectionRefs.current[scrollTarget].current;
+      const section = sectionRefs.current?.[scrollTarget].current;
       if (!section) return;
       const top = section.getBoundingClientRect().top + window.pageYOffset - 80;
       window.scrollTo({

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Header from './Header';
 
@@ -42,6 +42,21 @@ it('closes when a mobile destination is selected', () => {
   fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
   fireEvent.click(within(screen.getByRole('navigation', { name: 'Menu mobile' })).getByRole('link', { name: 'Catalogo' }));
   expect(screen.queryByRole('navigation', { name: 'Menu mobile' })).not.toBeInTheDocument();
+});
+
+it('closes an open menu when the viewport reaches the desktop breakpoint', () => {
+  const listeners = new Set<(event: MediaQueryListEvent) => void>();
+  const query = { matches: false, addEventListener: (_: string, listener: (event: MediaQueryListEvent) => void) => listeners.add(listener), removeEventListener: (_: string, listener: (event: MediaQueryListEvent) => void) => listeners.delete(listener) };
+  const original = window.matchMedia;
+  window.matchMedia = jest.fn().mockReturnValue(query);
+  try {
+    renderHeader();
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
+    act(() => { listeners.forEach(listener => listener({ matches: true } as MediaQueryListEvent)); });
+    expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute('aria-expanded', 'false');
+  } finally {
+    window.matchMedia = original;
+  }
 });
 
 it('marks the current route in desktop navigation', () => {

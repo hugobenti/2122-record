@@ -23,9 +23,14 @@ module.exports = {
           "50%": { opacity: 0.2 },
           "100%": { opacity: 0 },
         },
+        "menu-fade": {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
       },
       animation: {
         fade: "fade 10s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "menu-fade": "menu-fade 180ms ease-out",
       },
     },
   },

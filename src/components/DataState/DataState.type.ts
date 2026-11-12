@@ -1,7 +1,7 @@
 import { TLoadStatus } from '../../services/useAirtableRecords.type';
 
 export interface IDataStateProps {
-  status: Exclude<TLoadStatus, 'ready'>;
+  status: TLoadStatus;
   message: string;
   onRetry?: () => void;
 }

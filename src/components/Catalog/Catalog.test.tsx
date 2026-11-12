@@ -19,3 +19,22 @@ test('recovers from unauthorized failure without leaking API details', async () 
   await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
   expect(screen.queryByText(/tbl|401|Unauthorized/)).not.toBeInTheDocument();
 });
+
+test('keeps keyboard focus on the status through retry and successful loading', async () => {
+  fetchMock.mockResolvedValueOnce({ ok: false, status: 503 });
+  fetchMock.mockResolvedValueOnce({ ok: true, json: async () => ({ records: [{ id: 'rec1', fields: { Nome: 'Beat de volta' } }] }) });
+  render(<Catalog />);
+  const retry = await screen.findByRole('button', { name: 'Tentar de novo' });
+  retry.focus();
+  fireEvent.click(retry);
+  const status = screen.getByRole('status');
+  expect(status).toHaveFocus();
+  await screen.findByText('Beat de volta');
+  expect(status).toHaveFocus();
+});
+
+test('reports a malformed successful response as an error rather than loading forever', async () => {
+  fetchMock.mockResolvedValue({ ok: true, json: async () => ({}) });
+  render(<Catalog />);
+  expect(await screen.findByText('Não conseguimos carregar o catálogo agora.')).toBeInTheDocument();
+});

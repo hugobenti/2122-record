@@ -20,5 +20,6 @@ export async function getTableRecords(tableId: string, viewId?: string): Promise
   const response = await fetch(url, { headers });
   if (!response.ok) throw new AirtableError(response.status);
   const data = await response.json();
+  if (!Array.isArray(data.records)) throw new AirtableError(502);
   return data.records as IAirtableRecord[];
 }
