@@ -1,124 +1,58 @@
-// Header.tsx
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import UseHeader from "./useHeader";
-import MenuIcon from "./MenuIcon";
+import { Link } from 'react-router-dom';
+import { cx } from '../../utils/cx';
+import useHeader from './useHeader';
+import MenuIcon from './MenuIcon';
+import { header } from './Header.style';
 
 const Header = () => {
-  const { headerOptions, headerRefs, activeHeaderIndex, setSelectorPosition } =
-    UseHeader();
-  const location = useLocation();
-
-  const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
-
-  // Mapeia as opções do header para as rotas
-  const headerRoutes = ["/", "/sobre", "/servicos", "/catalogo", "/portfolio"];
-
-  // Função para lidar com o clique no link "Home"
-  const handleHomeClick = (e: React.MouseEvent) => {
-    // Se estamos na HomePage, faz scroll para o topo
-    if (location.pathname === "/" || location.pathname === "/sobre") {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-    // Se não estamos na HomePage, navega normalmente
-  };
-
-  // Função para lidar com o clique no link "Sobre"
-  const handleSobreClick = (e: React.MouseEvent) => {
-    // Se estamos na HomePage (rota "/" ou "/sobre"), faz scroll para a seção About
-    if (location.pathname === "/" || location.pathname === "/sobre") {
-      e.preventDefault();
-      const aboutSection = document.getElementById("about");
-      if (aboutSection) {
-        const headerHeight = 96; // Altura do header
-        const targetPosition = aboutSection.offsetTop - headerHeight;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-    // Se não estamos na HomePage, navega normalmente
-  };
+  const { isOpen, toggle, close, toggleRef, items, onHomeClick } = useHeader();
 
   return (
-    <header className="fixed top-0 left-0 w-full z-10">
-      <div className="bg-stone-800 bg-opacity-90 shadow-lg relative">
-        {/* Barra superior fixa */}
-        <div className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 h-16 sm:h-20 lg:h-24 flex items-center justify-between">
-          {/* Menu desktop */}
-          <nav className="hidden sm:flex gap-4 sm:gap-6 lg:gap-8 z-10 relative">
-            {headerOptions.map((value, index) => (
+    <header className={cx(header.base)}>
+      <div className={cx(header.surface)}>
+        <div className={cx(header.bar)}>
+          <nav aria-label="Menu principal" className={cx(header.desktop)}>
+            {items.map((item) => (
               <Link
-                to={headerRoutes[index]}
-                key={`header-${value}`}
-                ref={headerRefs[index]}
-                // Aplica sublinhado se este for o link ativo
-                className={`pt-3 cursor-pointer border-b-[3px] transition-all text-slate-300 hover:text-violet-400 font-semibold text-base sm:text-lg ${
-                  activeHeaderIndex === index
-                    ? " border-violet-400 text-violet-400"
-                    : "border-transparent"
-                }`}
-                onMouseEnter={() => {
-                  const currentRef = headerRefs[index].current;
-                  if (currentRef) {
-                    setSelectorPosition(currentRef.getBoundingClientRect().x);
-                  }
-                }}
-                onClick={
-                  value === "Home" 
-                    ? handleHomeClick 
-                    : value === "Sobre" 
-                    ? handleSobreClick 
-                    : undefined
-                }
+                key={item.to}
+                to={item.to}
+                aria-current={item.isCurrent ? 'page' : undefined}
+                className={cx(header.desktopLink, item.isCurrent && header.desktopCurrent)}
+                onClick={item.to === '/' ? onHomeClick : undefined}
               >
-                {value}
+                {item.label}
               </Link>
             ))}
           </nav>
-          {/* Botão mobile */}
           <button
-            name="hamburger-menu-btn"
-            className="sm:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-stone-700 p-2"
-            onClick={() => setMenuCollapsed((prev) => !prev)}
+            type="button"
+            ref={toggleRef}
+            aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={isOpen}
+            aria-controls="menu-mobile"
+            className={cx(header.toggle)}
+            onClick={toggle}
           >
-            <MenuIcon stroke="#FFFFFF" />
+            <MenuIcon />
           </button>
-          {/* Logo ou título */}
-          <Link to="/" className="header-title text-stone-50 text-xl sm:text-2xl lg:text-3xl">
+          {isOpen && (
+            <nav id="menu-mobile" aria-label="Menu mobile" className={cx(header.mobile)}>
+              {items.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  aria-current={item.isCurrent ? 'page' : undefined}
+                  className={cx(header.mobileLink, item.isCurrent && header.mobileCurrent)}
+                  onClick={item.to === '/' ? onHomeClick : close}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          )}
+          <Link to="/" className={cx(header.title)} onClick={onHomeClick}>
             2122
           </Link>
-        </div>
-
-        {/* Menu mobile expansível */}
-        <div
-          className={`sm:hidden absolute left-0 w-full bg-stone-800 shadow-lg overflow-hidden transition-all duration-500 ${
-            menuCollapsed ? "max-h-0" : "max-h-[50vh]"
-          }`}
-          style={{ top: "4rem" }}
-        >
-          {headerOptions.map((value, index) => (
-            <Link
-              to={headerRoutes[index]}
-              key={`mobile-header-${value}`}
-              className="block py-3 px-6 cursor-pointer text-slate-300 hover:text-slate-200 font-semibold text-lg"
-              onClick={(e) => {
-                setMenuCollapsed(true);
-                if (value === "Home") {
-                  handleHomeClick(e);
-                } else if (value === "Sobre") {
-                  handleSobreClick(e);
-                }
-              }}
-            >
-              {value}
-            </Link>
-          ))}
         </div>
       </div>
     </header>
