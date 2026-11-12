@@ -8,6 +8,7 @@ export const footerStyle = {
   heading: 'text-lg sm:text-xl font-semibold text-accent-strong mb-4',
   socialList: 'space-y-2 sm:space-y-3',
   link: 'hover:text-accent text-sm sm:text-base transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
+  emailLink: 'underline underline-offset-2',
   copyright: 'mt-8 sm:mt-12 border-t border-line pt-4 sm:pt-6 text-center',
   copyrightText: 'text-xs sm:text-sm',
 };

@@ -6,3 +6,9 @@ test('footer email opens a composed email while retaining its visible label', ()
   expect(screen.getByRole('link', { name: '2122producoes@gmail.com' })).toHaveAttribute('href', 'mailto:2122producoes@gmail.com');
   expect(screen.getByText('Email:', { exact: false })).toBeInTheDocument();
 });
+
+test('footer email remains recognizable as a link without hover or color', () => {
+  render(<Footer />);
+  const emailLink = screen.getByRole('link', { name: '2122producoes@gmail.com' });
+  expect(emailLink).toHaveClass('underline', 'underline-offset-2');
+});

@@ -1,3 +1,4 @@
+import { cx } from '../../utils/cx';
 import { footerEmail, socialLinks } from './Footer.data';
 import { footerStyle } from './Footer.style';
 import { useFooter } from './useFooter';
@@ -11,7 +12,7 @@ const Footer = () => {
         <div className={footerStyle.columns}>
           <div className={footerStyle.company}>
             <h2 className={footerStyle.companyHeading}>2122 Produções</h2>
-            <p className={footerStyle.email}>Email: <a href={`mailto:${footerEmail}`} className={footerStyle.link}>{footerEmail}</a></p>
+            <p className={footerStyle.email}>Email: <a href={`mailto:${footerEmail}`} className={cx(footerStyle.link, footerStyle.emailLink)}>{footerEmail}</a></p>
           </div>
           <div>
             <h3 className={footerStyle.heading}>Siga-nos</h3>
