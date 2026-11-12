@@ -14,12 +14,18 @@ export class AirtableError extends Error {
   }
 }
 
+function hasRecordShape(value: unknown): value is IAirtableRecord {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+  const { id, fields } = value as { id?: unknown; fields?: unknown };
+  return typeof id === 'string' && fields !== null && typeof fields === 'object' && !Array.isArray(fields);
+}
+
 export async function getTableRecords(tableId: string, viewId?: string): Promise<IAirtableRecord[]> {
   const url = `https://api.airtable.com/v0/${BASE_ID}/${tableId}${viewId ? `?view=${encodeURIComponent(viewId)}` : ''}`;
   const headers: HeadersInit = AIRTABLE_TOKEN ? { Authorization: `Bearer ${AIRTABLE_TOKEN}` } : {};
   const response = await fetch(url, { headers });
   if (!response.ok) throw new AirtableError(response.status);
   const data = await response.json();
-  if (!Array.isArray(data.records)) throw new AirtableError(502);
+  if (!Array.isArray(data?.records) || !data.records.every(hasRecordShape)) throw new AirtableError(502);
   return data.records as IAirtableRecord[];
 }

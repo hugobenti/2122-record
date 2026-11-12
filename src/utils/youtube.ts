@@ -1,4 +1,5 @@
-export function youtubeId(value: string): string | null {
+export function youtubeId(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
   const input = value.trim();
   if (/^[a-zA-Z0-9_-]+$/.test(input)) return input;
   try {

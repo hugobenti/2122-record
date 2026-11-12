@@ -17,3 +17,8 @@ test('rejects a successful response without a records array as a gateway failure
   global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
   await expect(getTableRecords(TABLE_CATALOG)).rejects.toMatchObject({ name: 'AirtableError', status: 502 });
 });
+
+test('rejects records without a string id and object fields', async () => {
+  global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ records: [{}] }) });
+  await expect(getTableRecords(TABLE_CATALOG)).rejects.toMatchObject({ name: 'AirtableError', status: 502 });
+});

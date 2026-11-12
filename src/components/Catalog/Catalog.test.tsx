@@ -38,3 +38,10 @@ test('reports a malformed successful response as an error rather than loading fo
   render(<Catalog />);
   expect(await screen.findByText('Não conseguimos carregar o catálogo agora.')).toBeInTheDocument();
 });
+
+test('renders a friendly error for a malformed record instead of crashing', async () => {
+  fetchMock.mockResolvedValue({ ok: true, json: async () => ({ records: [{}] }) });
+  render(<Catalog />);
+  expect(await screen.findByText('Não conseguimos carregar o catálogo agora.')).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Tentar de novo' })).toBeInTheDocument();
+});
