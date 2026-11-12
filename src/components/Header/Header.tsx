@@ -17,7 +17,7 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 aria-current={item.isCurrent ? 'page' : undefined}
-                className={cx(header.desktopLink, item.isCurrent && header.desktopCurrent)}
+                className={cx(header.desktopLink, item.isCurrent ? header.desktopCurrent : header.desktopIdle)}
                 onClick={item.to === '/' ? onHomeClick : undefined}
               >
                 {item.label}
@@ -42,7 +42,7 @@ const Header = () => {
                   key={item.to}
                   to={item.to}
                   aria-current={item.isCurrent ? 'page' : undefined}
-                  className={cx(header.mobileLink, item.isCurrent && header.mobileCurrent)}
+                  className={cx(header.mobileLink, item.isCurrent ? header.mobileCurrent : header.mobileIdle)}
                   onClick={item.to === '/' ? onHomeClick : close}
                 >
                   {item.label}

@@ -29,6 +29,9 @@ it('closes on Escape and restores focus to the toggle', () => {
   const toggle = screen.getByRole('button', { name: 'Abrir menu' });
   toggle.focus();
   fireEvent.click(toggle);
+  const mobile = screen.getByRole('navigation', { name: 'Menu mobile' });
+  within(mobile).getByRole('link', { name: 'Serviços' }).focus();
+  expect(toggle).not.toHaveFocus();
   fireEvent.keyDown(document, { key: 'Escape' });
   expect(screen.queryByRole('navigation', { name: 'Menu mobile' })).not.toBeInTheDocument();
   expect(toggle).toHaveFocus();
@@ -46,4 +49,19 @@ it('marks the current route in desktop navigation', () => {
   const desktop = screen.getByRole('navigation', { name: 'Menu principal' });
   expect(within(desktop).getByRole('link', { name: 'Serviços' })).toHaveAttribute('aria-current', 'page');
   expect(within(desktop).getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');
+});
+
+it('gives the current destination exclusive highlight colors', () => {
+  renderHeader();
+  const desktop = screen.getByRole('navigation', { name: 'Menu principal' });
+  const current = within(desktop).getByRole('link', { name: 'Serviços' });
+  const idle = within(desktop).getByRole('link', { name: 'Home' });
+  expect(current).toHaveClass('border-accent-strong', 'text-accent-strong');
+  expect(current).not.toHaveClass('border-transparent', 'text-ink-muted');
+  expect(idle).toHaveClass('border-transparent', 'text-ink-muted');
+
+  fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
+  const mobile = screen.getByRole('navigation', { name: 'Menu mobile' });
+  expect(within(mobile).getByRole('link', { name: 'Serviços' })).not.toHaveClass('text-ink-muted');
+  expect(within(mobile).getByRole('link', { name: 'Home' })).toHaveClass('text-ink-muted');
 });
