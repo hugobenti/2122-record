@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@keyframes menu-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 @font-face {
   font-family: "Elements";
