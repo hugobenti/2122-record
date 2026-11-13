@@ -5,7 +5,7 @@ servicos - producao, legal, marketing
 
 portifolio 
 catalogo
-contato
+contato - CTAs de cada serviço e da página inicial abrem a mesma conversa no Instagram (https://ig.me/m/2122producoes); o rodapé oferece email por mailto
 sobre
 
 
