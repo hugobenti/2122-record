@@ -29,3 +29,12 @@ portiflio projetos - titulo, capas,x players yt,x players spotify
 
 
 
+## Dados do Airtable
+
+O catálogo, o portfolio e o artista em destaque carregam dados do Airtable. Configure
+`REACT_APP_AIRTABLE_TOKEN` em `.env.local` para exibir os registros. Em caso de
+falha, cada seção mostra uma mensagem sem expor detalhes da API, um botão
+**Tentar de novo** e um link para o canal no YouTube. Se não houver registros,
+catálogo e portfolio mostram um estado vazio com o mesmo link; o artista em
+destaque não exibe conteúdo.
+
