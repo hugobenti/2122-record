@@ -17,8 +17,14 @@ a {
   font-family: "Quicksand", sans-serif;
 }
 
+html,
+body {
+  background-color: theme('colors.surface.base');
+}
+
 body {
   overflow-x: hidden;
+  isolation: isolate;
 }
 
 .img-card {
@@ -141,12 +147,17 @@ body {
 .app-background {
   background-image: url("./assets/fundo2.jpeg");
   position: fixed;
-  width: 110vw;
-  height: 100vh;
+  inset: 0;
   z-index: -10;
   background-size: cover;
   filter: grayscale(80%) brightness(70%);
+}
 
+.app-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(12 10 9 / 0.7);
 }
 
 .catalog-yt-video .video-responsive {

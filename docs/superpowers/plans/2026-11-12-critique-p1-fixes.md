@@ -34,13 +34,15 @@ Every task runs its impeccable command from the vendored skill, in this order:
 | PR | Branch | Impeccable | Implementer (model) | Reviewer (model) | Depends on |
 |---|---|---|---|---|---|
 | 0 | `chore/agents-md` | detector baseline | this session (Claude Opus 5.5) | Hugo | — |
-| 1 | `fix/background-tokens` | `audit` (before + after) | `sonnet-implementer` (Claude Sonnet 5.5, thinking medium) | `sonnet-reviewer` (Claude Sonnet 5.5, thinking high) | PR 0 merged |
-| 2 | `fix/mobile-nav` | `adapt` | `sonnet-implementer` (Sonnet 5.5, medium) | `sonnet-reviewer` (Sonnet 5.5, high) | PR 1 merged |
-| 3 | `fix/airtable-states` | `harden` | `sonnet-implementer` (Sonnet 5.5, medium) | `sonnet-reviewer` (Sonnet 5.5, high) | PR 1 merged |
-| 4 | `feat/contact-path` | `clarify` | `sonnet-implementer` (Sonnet 5.5, medium) | `sonnet-reviewer` (Sonnet 5.5, high) | PR 1 merged |
-| 5 | `chore/polish` | `polish`, then `critique` | `task` agent (session model, Claude Opus 5.5) | orchestrator runs `critique` with two isolated `task` agents (A design review, B detector) | PRs 1–4 merged |
+| 1 | `fix/background-tokens` | `audit` (before + after) | `sol-implementer` (GPT-6 Sol `openai-codex/gpt-6-sol`, thinking medium) | `sonnet-reviewer` (Claude Sonnet 5.5, thinking high) | PR 0 merged |
+| 2 | `fix/mobile-nav` | `adapt` | `sol-implementer` (GPT-6 Sol, medium) | `sonnet-reviewer` (Sonnet 5.5, high) | PR 1 |
+| 3 | `fix/airtable-states` | `harden` | `sol-implementer` (GPT-6 Sol, medium) | `sonnet-reviewer` (Sonnet 5.5, high) | PR 1 |
+| 4 | `feat/contact-path` | `clarify` | `sol-implementer` (GPT-6 Sol, medium) | `sonnet-reviewer` (Sonnet 5.5, high) | PR 1 |
+| 5 | `chore/polish` | `polish`, then `critique` | `sol-implementer` (GPT-6 Sol, medium) | orchestrator (this session, Claude Opus 5.5) runs `critique` with two isolated `task` agents (GPT-6 Sol, thinking low): A design review, B detector | PRs 1–4 merged |
 
-Why these models: PRs 1–4 pin names, values, copy and tests, so the remaining judgment fits Sonnet. Polish and critique are open-ended design judgment across all routes, and critique must spawn two isolated sub-agents, which `sonnet-implementer` cannot do (`spawns: ""`). PRs 2, 3 and 4 touch disjoint components and may run in parallel once PR 1 is merged. Their only shared file is the generated `src/main.css`; resolve conflicts in it by rebasing and re-running `npm run css`, never by hand.
+Hugo picked GPT-6 Sol for every implementer; `sol-implementer` is defined in `~/.omp/agent/agents/sol-implementer.md` (same contract as `sonnet-implementer`). Reviewers stay on Sonnet so the model that writes a task is never the one that grades it. `sol-implementer` cannot spawn sub-agents (`spawns: ""`), so the closing critique runs from the orchestrator.
+
+Implementers run one at a time. PRs 2, 3 and 4 branch from the PR 1 branch head and target `main`; each PR body says it is stacked on PR 1, and after PR 1 merges their diffs shrink to their own commits. Their only shared file is the generated `src/main.css`; resolve conflicts in it by rebasing and re-running `npm run css`, never by hand.
 
 ## Review Focus
 
@@ -153,7 +155,7 @@ Fixes critique P1 #1:
   - No link named "Sobre".
 - [ ] **Step 3: Run `CI=true npm test -- Header`.** Expected: FAIL.
 - [ ] **Step 4: Implement.**
-  - `useHeader(): { isOpen; toggle; close; toggleRef; isActive(to: string): boolean; onHomeClick }`. Esc listener only while open; closes on `location.pathname` change. `onHomeClick` keeps the existing smooth scroll-to-top on `/` (`behavior: 'auto'` under reduced motion).
+  - `useHeader(): { isOpen: boolean; toggle(): void; close(): void; toggleRef: RefObject<HTMLButtonElement>; items: INavLink[]; onHomeClick(e: MouseEvent): void }`, where `INavLink = INavItem & { isCurrent: boolean }` (view model, so markup never calls a helper). Esc listener only while open; closes on `location.pathname` change. `onHomeClick` keeps the existing smooth scroll-to-top on `/` (`behavior: 'auto'` under reduced motion).
   - Panel `id="menu-mobile"` is rendered only while open: no `max-h` clipping, opacity fade with `motion-safe:` only.
   - Remove the scroll-section detection that existed only to highlight Sobre.
 - [ ] **Step 5: Run the tests.** Expected: PASS.
