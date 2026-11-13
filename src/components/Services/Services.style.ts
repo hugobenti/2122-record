@@ -2,7 +2,7 @@ export const servicesStyle = {
   root: 'bg-surface-section py-8 sm:py-12 lg:py-16 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 min-h-[60vh] text-ink',
   container: 'max-w-7xl mx-auto',
   heading: 'large-text text-accent pb-8 sm:pb-12',
-  service: 'pt-8 first-of-type:pt-0',
+  service: 'pt-8 pb-10 sm:pb-12 first-of-type:pt-0',
   title: 'large-title text-accent-soft pb-4 sm:pb-6',
   intro: 'medium-text text-ink pb-4 sm:pb-6 w-full max-w-[75ch] leading-relaxed',
   toggle: 'block text-right pl-4 text-accent-strong hover:text-accent cursor-pointer medium-text-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
@@ -11,6 +11,6 @@ export const servicesStyle = {
   list: 'space-y-3 sm:space-y-4',
   bullet: 'ml-6 medium-text leading-relaxed',
   closing: 'medium-text pb-4 sm:pb-6 pt-6 sm:pt-8 leading-relaxed',
-  serviceCta: 'mt-2',
-  endCta: 'pt-10 text-center',
+  serviceCta: 'mt-6 sm:mt-8',
+  endCta: 'pt-8 sm:pt-10',
 };

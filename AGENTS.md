@@ -13,6 +13,7 @@ src/pages        route screens; thin, they render components
 src/components   one folder per component (see "Component architecture")
 src/services     Airtable client and data hooks
 src/context      AppContext: scroll-reveal refs and flags
+src/theme       semantic color tokens (colors.js) and contrast helpers/tests
 src/utils        shared pure helpers (cx)
 src/assets       images, the Elements font, AnimatePolvo
 src/index.css    Tailwind source: base styles and custom classes

@@ -10,9 +10,8 @@ export default function Catalog() {
     <div id="catalog" className={cx(catalog.base)}>
       <div className={cx(catalog.inner)}>
         <p className={cx(catalog.heading)}>Catálogo de Beats</p>
-        {status !== 'ready' ? (
-          <DataState status={status} message={status === 'loading' ? 'Carregando catálogo…' : status === 'error' ? 'Não conseguimos carregar o catálogo agora.' : 'Nenhum beat publicado por enquanto.'} onRetry={retry} />
-        ) : items.map(item => (
+        <DataState status={status} message={status === 'loading' ? 'Carregando catálogo…' : status === 'error' ? 'Não conseguimos carregar o catálogo agora.' : status === 'ready' ? 'Catálogo carregado.' : 'Nenhum beat publicado por enquanto.'} onRetry={retry} />
+        {status === 'ready' && items.map(item => (
           <div key={item.id} className={cx(catalog.item)}>
             <p className={cx(catalog.title)}>{item.name}</p>
             <p className={cx(catalog.description)}>{item.description}</p>

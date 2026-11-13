@@ -1074,6 +1074,10 @@ video {
   padding-bottom: 2rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -1092,10 +1096,6 @@ video {
 
 .pl-4 {
   padding-left: 1rem;
-}
-
-.pt-10 {
-  padding-top: 2.5rem;
 }
 
 .pt-16 {
@@ -1249,16 +1249,6 @@ video {
 
 .duration-1000 {
   transition-duration: 1000ms;
-}
-
-@keyframes menu-fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 @font-face {
@@ -1480,6 +1470,30 @@ body {
   color: rgb(245 245 244 / var(--tw-text-opacity));
 }
 
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.focus\:items-start:focus {
+  align-items: flex-start;
+}
+
+.focus\:py-2:focus {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.focus\:text-left:focus {
+  text-align: left;
+}
+
 .focus-visible\:outline:focus-visible {
   outline-style: solid;
 }
@@ -1501,7 +1515,17 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .motion-safe\:animate-\[menu-fade_180ms_ease-out\] {
+  @keyframes menu-fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .motion-safe\:animate-menu-fade {
     animation: menu-fade 180ms ease-out;
   }
 
@@ -1683,6 +1707,10 @@ body {
 
   .sm\:pb-6 {
     padding-bottom: 1.5rem;
+  }
+
+  .sm\:pt-10 {
+    padding-top: 2.5rem;
   }
 
   .sm\:pt-20 {

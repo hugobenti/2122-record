@@ -10,7 +10,7 @@ export const header = {
   desktopCurrent: 'border-accent-strong text-accent-strong',
   toggle: 'sm:hidden flex items-center justify-center w-11 h-11 rounded-lg hover:bg-surface-sunken p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-strong',
   title: 'header-title text-ink text-xl sm:text-2xl lg:text-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-strong',
-  mobile: 'sm:hidden absolute left-0 top-16 w-full bg-surface shadow-lg motion-safe:animate-[menu-fade_180ms_ease-out]',
+  mobile: 'sm:hidden absolute left-0 top-16 w-full bg-surface shadow-lg motion-safe:animate-menu-fade',
   mobileLink: cx('block py-3 px-6 min-h-11 cursor-pointer hover:text-ink font-semibold text-lg', 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-strong'),
   mobileIdle: 'text-ink-muted',
   mobileCurrent: 'text-accent-strong',

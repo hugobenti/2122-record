@@ -33,6 +33,25 @@ function useHeader(): IUseHeader {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [isOpen, close]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const desktop = window.matchMedia?.('(min-width: 640px)');
+    if (!desktop) return;
+    if (desktop.matches) {
+      close();
+      return;
+    }
+    const onChange = (event: MediaQueryListEvent) => {
+      if (event.matches) close();
+    };
+    if (desktop.addEventListener) {
+      desktop.addEventListener('change', onChange);
+      return () => desktop.removeEventListener('change', onChange);
+    }
+    desktop.addListener(onChange);
+    return () => desktop.removeListener(onChange);
+  }, [isOpen, close]);
+
   const onHomeClick = (event: MouseEvent) => {
     close();
     if (pathname === '/') {

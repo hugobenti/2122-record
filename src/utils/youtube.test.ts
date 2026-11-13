@@ -10,3 +10,7 @@ test.each([
 ])('parses %s as %s', (value, expected) => {
   expect(youtubeId(value)).toBe(expected);
 });
+
+test('rejects non-string video input without throwing', () => {
+  expect(youtubeId(42 as unknown)).toBeNull();
+});

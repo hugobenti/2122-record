@@ -16,7 +16,7 @@ const darkInk = ['ink', 'inkMuted', 'accent', 'accentSoft', 'accentStrong'] as c
 const allowedPairs: [string, string, string][] = [
   ...darkSurfaces.flatMap((surface) =>
     darkInk.map((ink): [string, string, string] => [
-      `${ink} on surface-${surface}`,
+      `${ink} on ${surface === 'DEFAULT' ? 'surface' : `surface-${surface}`}`,
       colors[ink],
       colors.surface[surface],
     ])

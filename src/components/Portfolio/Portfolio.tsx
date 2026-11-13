@@ -10,9 +10,8 @@ export default function Portfolio() {
     <div id="portfolio" className={cx(portfolio.base)}>
       <div className={cx(portfolio.inner)}>
         <p className={cx(portfolio.heading)}>Portfolio</p>
-        {status !== 'ready' ? (
-          <DataState status={status} message={status === 'loading' ? 'Carregando portfolio…' : status === 'error' ? 'Não conseguimos carregar o portfolio agora.' : 'Nenhum projeto publicado por enquanto.'} onRetry={retry} />
-        ) : (
+        <DataState status={status} message={status === 'loading' ? 'Carregando portfolio…' : status === 'error' ? 'Não conseguimos carregar o portfolio agora.' : status === 'ready' ? 'Portfolio carregado.' : 'Nenhum projeto publicado por enquanto.'} onRetry={retry} />
+        {status === 'ready' && (
           <div className={cx(portfolio.list)}>
             {items.map(item => (
               <div key={item.id} className={cx(portfolio.item, item.isReversed && portfolio.reverse)}>

@@ -15,7 +15,7 @@ export const useWelcome = (): IWelcomeView => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const [isInView, setIsInView] = useState(true);
   const [reduceMotion, setReduceMotion] = useState(
-    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
   );
 
   useEffect(() => {
@@ -25,10 +25,15 @@ export const useWelcome = (): IWelcomeView => {
   }, []);
 
   useEffect(() => {
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const preference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (!preference) return;
     const handleChange = () => setReduceMotion(preference.matches);
-    preference.addEventListener('change', handleChange);
-    return () => preference.removeEventListener('change', handleChange);
+    if (preference.addEventListener) {
+      preference.addEventListener('change', handleChange);
+      return () => preference.removeEventListener('change', handleChange);
+    }
+    preference.addListener(handleChange);
+    return () => preference.removeListener(handleChange);
   }, []);
 
   useEffect(() => {
