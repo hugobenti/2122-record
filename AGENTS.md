@@ -80,4 +80,15 @@ Its critiques are model judgment: useful, but they can miss real problems and fl
 
 ## Workflow
 
-Never commit to `main`. Each stage of work gets its own branch from a freshly fetched `origin/main` (`feat/<name>`, `fix/<name>`, `refactor/<name>`, `chore/<name>`), stays small (≤ ~20 files) and lands through a pull request that Hugo reviews and merges. There is no CI: write the failing test first for anything with logic, and run lint, typecheck, test, build and `npm run css` (no diff left in `main.css`) before asking for review.
+Two long-lived branches:
+
+| Branch        | Deploys to (Vercel project `2122`)                    | Who sees it              |
+| ------------- | ----------------------------------------------------- | ------------------------ |
+| `development` | https://2122-dev.vercel.app (branch domain, preview)  | Hugo and the client      |
+| `main`        | https://www.2122prod.com.br (production)              | everyone                 |
+
+Never commit directly to either. Each stage of work gets its own branch from a freshly fetched `origin/development` (`feat/<name>`, `fix/<name>`, `refactor/<name>`, `chore/<name>`), stays small (≤ ~20 files) and lands through a pull request **into `development`** that Hugo reviews and merges. Production only changes through a release PR `development` → `main`, opened once the client approves what is on https://2122-dev.vercel.app. A hotfix that cannot wait branches from `origin/main`, merges into `main`, then `main` is merged back into `development`.
+
+There is no CI: write the failing test first for anything with logic, and run lint, typecheck, test, build and `npm run css` (no diff left in `main.css`) before asking for review. `src/main.css` is generated, so two PRs that both change classes conflict there: merge `origin/development` into the branch, run `npm run css`, commit the regenerated file. Never resolve it by hand.
+
+Previews are behind Vercel Authentication. To show the client, open the latest `development` deployment in the Vercel dashboard and use **Share** to create a link that bypasses the login.
